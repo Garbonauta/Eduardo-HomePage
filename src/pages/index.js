@@ -1,13 +1,34 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import PropTypes from 'prop-types'
 
-const IndexPage = () => (
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
-)
+function WelcomeBanner ({ data }) {
+  return (
+    <div>
+      <div>{data.contentfulMe.fullName}</div>
+      <div>{data.contentfulMe.jobTitle}</div>
+      <div>{data.contentfulMe.location}</div>
+    </div>
+  )
+}
+WelcomeBanner.propTypes = {
+  data: PropTypes.object.isRequired,
+}
 
-export default IndexPage
+export default function IndexPage ({ data }) {
+  return (
+    <WelcomeBanner data={data}/>
+  )
+}
+IndexPage.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export const query = graphql`
+  query HomeQuery {
+    contentfulMe {
+      fullName
+      jobTitle
+      location
+    }
+  }
+`

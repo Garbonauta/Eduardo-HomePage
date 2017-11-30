@@ -1,0 +1,11 @@
+.pageContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.footerPadding {
+  height: 148px;
+  background: none;
+  width: 100%
+}

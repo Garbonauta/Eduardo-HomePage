@@ -1,0 +1,17 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  color: #5F5F5F;
+  background-color: #F9F9F9;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:visited, .link:link {
+  color: inherit;
+}

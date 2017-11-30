@@ -1,0 +1,56 @@
+.navBar {
+  position: relative;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  border-bottom: 1px solid #f6f2f8;
+  background-color: white;
+}
+
+.navBarContent {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navElement {
+  display: inline-block;
+}
+
+.navElement:hover {
+  transform: scale(1.1);
+}
+
+.socialList {
+  margin: 0;
+  list-style: none;
+}
+
+.link {
+  composes: link from '../../sharedStyles/styles.module.css';
+  padding: 0 0.7em;
+}
+
+.activeNavigation {
+}
+
+.socialEntry {
+  display: inline-block;
+  font-size: 2.2em;
+  padding: 0 0.3em;
+}
+
+.socialEntry:hover {
+  transform: scale(1.1);
+}
+
+.link:visited, .link:link, .socialIcon:visited, .socialIcon:link {
+  color: inherit;
+}
