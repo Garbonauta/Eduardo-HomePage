@@ -1,0 +1,56 @@
+.menu {
+  display: block;
+}
+
+.menu >div {
+  position: fixed;
+
+  z-index: 2;
+  right: -250px;
+  height: 100%;
+  width: 250px;
+  background-color: white;
+  border-left: 1px solid #f6f2f8;
+}
+
+.slideIn {
+  animation: slideIn 0.3s forwards;
+  -webkit-animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slideIn {
+    100% { -webkit-transform: translateX(-100%); }
+}
+
+.slideOut {
+  animation: slideOut 0.3s forwards;
+  -webkit-animation: slideOut 0.3s forwards;
+}
+
+@keyframes slideOut {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slideOut {
+  0% { -webkit-transform: translateX(-100%); }
+  100% { -webkit-transform: translateX(0%); }
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  padding: 36px 24px;
+}
+
+.closeSign {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  font-size: 24px;
+  cursor: pointer;
+}

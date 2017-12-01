@@ -10,7 +10,7 @@ export default function Footer ({me}) {
     <footer className={footerElement}>
       <div className={copyright}>{`Copyright \u00A9 ${me.fullName}. ${(new Date()).getFullYear()} All rights reserved.`}</div>
       <div className={developed}>
-        <span>{`Developed by ${me.fullName}.`}</span>
+        <span>{`Developed by ${me.fullName}. `}</span>
         <span>
           {'Built with '}
           <a href='https://reactjs.org/' className={jsLink}>{'React'}</a>

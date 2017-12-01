@@ -1,0 +1,16 @@
+.link {
+  composes: link from '../../sharedStyles/styles.module.css';
+  padding: 0.4rem 0;
+}
+
+.socialEntry {
+  composes: socialEntry from '../../sharedStyles/styles.module.css';
+}
+
+.socialIcon {
+  composes: socialIcon from '../../sharedStyles/styles.module.css';
+}
+
+.socialList {
+  composes: socialList from '../../sharedStyles/styles.module.css';
+}

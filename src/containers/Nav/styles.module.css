@@ -29,8 +29,11 @@
 }
 
 .socialList {
-  margin: 0;
-  list-style: none;
+  composes: socialList from '../../sharedStyles/styles.module.css';
+}
+
+.socialIcon {
+  composes: socialIcon from '../../sharedStyles/styles.module.css';
 }
 
 .link {
@@ -42,15 +45,26 @@
 }
 
 .socialEntry {
-  display: inline-block;
-  font-size: 2.2em;
-  padding: 0 0.3em;
+  composes: socialEntry from '../../sharedStyles/styles.module.css';
 }
 
 .socialEntry:hover {
   transform: scale(1.1);
 }
 
-.link:visited, .link:link, .socialIcon:visited, .socialIcon:link {
-  color: inherit;
+.navIcon {
+  display: inline-block;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 2rem;
+  width: 36px;
+  text-align: center;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
 }

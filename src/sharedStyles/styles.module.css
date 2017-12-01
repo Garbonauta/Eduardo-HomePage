@@ -12,6 +12,18 @@ html, body {
   text-decoration: none;
 }
 
-.link:visited, .link:link {
+.socialEntry {
+  display: inline-block;
+  font-size: 2em;
+  margin-right: 0.6rem;
+}
+
+.socialList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link:visited, .link:link, .socialIcon:visited, .socialIcon:link {
   color: inherit;
 }

@@ -6,6 +6,6 @@ export default function About ({data}) {
     <div>{'Placeholder'}</div>
   )
 }
-About.propTypes = {
-  data: PropTypes.object.isRequired,
-}
+// About.propTypes = {
+//   data: PropTypes.object.isRequired,
+// }

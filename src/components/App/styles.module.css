@@ -1,3 +1,13 @@
+.mainContainer {
+  overflow: auto;
+}
+
+.contentContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
 .pageContainer {
   max-width: 900px;
   margin: 0 auto;
