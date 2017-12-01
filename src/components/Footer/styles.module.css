@@ -1,11 +1,11 @@
 .footerElement {
+  composes: footer from '../../sharedStyles/styles.module.css';
   position: absolute;
   bottom: 0;
   width: 100%;
   margin: 0 auto;
   padding: 1.8rem 0;
   text-align: center;
-  max-height: 148px;
   font-size: 0.8rem;
   -webkit-box-shadow: 0 -1px 3px 1px rgba(153,148,153,0.62);
   -moz-box-shadow: 0 -1px 3px 1px rgba(153,148,153,0.62);

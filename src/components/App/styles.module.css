@@ -15,7 +15,7 @@
 }
 
 .footerPadding {
-  height: 148px;
+  composes: footerPadding from '../../sharedStyles/styles.module.css';
   background: none;
   width: 100%
 }

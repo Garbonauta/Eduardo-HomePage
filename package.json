@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "author": "Eduardo Moreno <eduardo.moreno.j@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.126",
+    "gatsby": "^1.9.127",
     "gatsby-link": "^1.6.30",
     "gatsby-plugin-react-helmet": "^1.0.8",
+    "gatsby-plugin-typography": "^1.7.10",
     "gatsby-source-contentful": "^1.3.28",
     "react-icons": "^2.2.7"
   },
@@ -24,9 +25,9 @@
   },
   "devDependencies": {
     "@types/react": "^16.0.25",
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.0.3",
     "dotenv": "^4.0.0",
-    "eslint": "^4.12.0",
+    "eslint": "^4.12.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",

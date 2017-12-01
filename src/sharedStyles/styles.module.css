@@ -27,3 +27,11 @@ html, body {
 .link:visited, .link:link, .socialIcon:visited, .socialIcon:link {
   color: inherit;
 }
+
+.footer {
+  max-height: 164px;
+}
+
+.footerPadding {
+  height: 164px;
+}

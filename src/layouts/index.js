@@ -6,6 +6,9 @@ import App from '../components/App/App'
 export default function IndexTemplate ({ children, data }) {
   return (
     <div>
+      <Helmet >
+        <title>{data.contentfulPerson.fullName}</title>
+      </Helmet>
       <App data={data}>
         {children}
       </App>
