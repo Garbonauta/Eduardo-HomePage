@@ -6,7 +6,6 @@ import App from '../components/App/App'
 export default function IndexTemplate ({ children, data }) {
   return (
     <div>
-      <Helmet title={data.contentfulMe.fullName}/>
       <App data={data}>
         {children}
       </App>
@@ -17,3 +16,13 @@ IndexTemplate.propTypes = {
   children: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
 }
+
+export const query = graphql`
+  query IndexQuery {
+    contentfulPerson(fullName: {eq: "Eduardo Moreno"}) {
+      fullName
+      github
+      linkedIn
+    }
+  }
+`

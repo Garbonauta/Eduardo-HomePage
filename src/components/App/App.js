@@ -33,7 +33,7 @@ class App extends React.Component {
     this.setState({menuVisible: false})
   }
   render () {
-    const {contentfulMe: me} = this.props.data
+    const {contentfulPerson: me} = this.props.data
     return (
       <div className={mainContainer}>
         <div className={contentContainer}>
@@ -52,15 +52,5 @@ class App extends React.Component {
     )
   }
 }
-
-export const query = graphql`
-  query NavQuery {
-    contentfulMe {
-      fullName
-      github
-      linkedIn
-    }
-  }
-`
 
 export default App

@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 function WelcomeBanner ({ data }) {
   return (
     <div>
-      <div>{data.contentfulMe.fullName}</div>
-      <div>{data.contentfulMe.jobTitle}</div>
-      <div>{data.contentfulMe.location}</div>
+      <div>{data.contentfulPerson.fullName}</div>
+      <div>{data.contentfulPerson.jobTitle}</div>
     </div>
   )
 }
@@ -25,10 +24,9 @@ IndexPage.propTypes = {
 
 export const query = graphql`
   query HomeQuery {
-    contentfulMe {
+    contentfulPerson {
       fullName
       jobTitle
-      location
     }
   }
 `
