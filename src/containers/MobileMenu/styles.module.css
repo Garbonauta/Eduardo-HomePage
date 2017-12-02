@@ -1,3 +1,9 @@
+.linkList {
+  display: flex;
+  flex-direction: column;
+  composes: socialList from '../../sharedStyles/styles.module.css';
+}
+
 .link {
   composes: link from '../../sharedStyles/styles.module.css';
   padding: 0.4rem 0;

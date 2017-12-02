@@ -2,12 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   footerElement, developed, copyright, link, jsLink,
-  attributions, contentfulLogo,
+  attributions, contentfulLogo, localeInfo,
 } from './styles.module.css'
+import LanguagePicker from '../LanguagePicker/LanguagePicker'
 
-export default function Footer ({me}) {
+export default function Footer ({ languages, me }) {
   return (
     <footer className={footerElement}>
+      <div className={localeInfo}>{
+        <LanguagePicker languages={languages} />
+      }</div>
       <div className={copyright}>{`Copyright \u00A9 ${me.fullName}. ${(new Date()).getFullYear()} All rights reserved.`}</div>
       <div className={developed}>
         <span>{`Developed by ${me.fullName}. `}</span>
@@ -33,5 +37,6 @@ export default function Footer ({me}) {
   )
 }
 Footer.propTypes = {
+  languages: PropTypes.array.isRequired,
   me: PropTypes.object.isRequired,
 }

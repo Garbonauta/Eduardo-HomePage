@@ -9,9 +9,9 @@
 .navBarContent {
   margin: 0 auto;
   max-width: 1100px;
-  padding: 0 24px;
   display: flex;
   justify-content: space-between;
+  padding: 0 24px;
 }
 
 .navList {
@@ -38,7 +38,7 @@
 
 .link {
   composes: link from '../../sharedStyles/styles.module.css';
-  padding: 0 0.7em;
+  padding: 0 0.7rem 0 0 ;
 }
 
 .activeNavigation {

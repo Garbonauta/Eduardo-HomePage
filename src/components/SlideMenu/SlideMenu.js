@@ -3,37 +3,20 @@ import PropTypes from 'prop-types'
 import Close from 'react-icons/lib/fa/close'
 import { menu, slideIn, slideOut, menuContent, closeSign } from './styles.module.css'
 
-class SlideMenu extends React.Component {
-  static propTypes = {
-    visible: PropTypes.bool.isRequired,
-    closeMenuAction: PropTypes.func.isRequired,
-  }
-  state = {
-    initialLoad: true,
-  }
-  componentDidMount = () => {
-    this.state.initialLoad && this.setState({initialLoad: false})
-  }
-  shouldComponentUpdate = (nextProps, nextState) => {
-    if (this.state.initialLoad) {
-      return false
-    }
-    return true
-  }
-
-  render () {
-    const {visible, children, closeMenuAction} = this.props
-    return (
-      <div className={menu}>
-        <div className={visible ? slideIn : (!this.state.initialLoad ? slideOut : '')}>
-          <Close className={closeSign} onClick={closeMenuAction}/>
-          <div className={menuContent}>
-            {children}
-          </div>
+export default function SlideMenu ({visible, modalClose, closeMenuAction, children}) {
+  return (
+    <div className={menu}>
+      <div id='slider-menu' className={visible ? slideIn : (modalClose ? slideOut : '')}>
+        <Close className={closeSign} onClick={closeMenuAction}/>
+        <div className={menuContent}>
+          {children}
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
-
-export default SlideMenu
+SlideMenu.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  modalClose: PropTypes.bool.isRequired,
+  closeMenuAction: PropTypes.func.isRequired,
+}

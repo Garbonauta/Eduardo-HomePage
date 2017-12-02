@@ -9,28 +9,26 @@ import {
   socialList, navIcon, displayNone, displayBlock,
 } from './styles.module.css'
 
-export default function NavContainer ({me, onClick, fullNav}) {
+export default function NavContainer ({me, navElements, onClick, fullNav}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
         <ul className={`${navList} ${ fullNav ? displayBlock : displayNone}`}>
-          <li className={navElement}>
-            <Link
-              exact={true}
-              activeClassName={activeNavigation}
-              className={link}
-              to='/'>
-              {'Home'}
-            </Link>
-          </li>
-          <li className={navElement}>
-            <Link
-              activeClassName={activeNavigation}
-              className={link}
-              to='/about'>
-              {'About'}
-            </Link>
-          </li>
+          {
+            navElements.map(element => {
+              return (
+                <li key={element.title} className={navElement}>
+                  <Link
+                    exact={true}
+                    activeClassName={activeNavigation}
+                    className={link}
+                    to={element.slug}>
+                    {element.displayText}
+                  </Link>
+                </li>
+              )
+            })
+          }
         </ul>
         <ul className={`${socialList} ${ fullNav ? displayBlock : displayNone}`}>
           <li className={socialEntry}>
@@ -55,5 +53,6 @@ export default function NavContainer ({me, onClick, fullNav}) {
 NavContainer.propTypes = {
   fullNav: PropTypes.bool.isRequired,
   me: PropTypes.object.isRequired,
+  navElements: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 }

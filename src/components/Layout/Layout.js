@@ -5,16 +5,21 @@ import Footer from '../../components/Footer/Footer'
 import Overlay from '../Overlay/Overlay'
 import MobileMenuContainer from '../../containers/MobileMenu/MobileMenuContainer'
 import { mainContainer, contentContainer, pageContainer, footerPadding } from './styles.module.css'
+
 const mql = window.matchMedia(`(min-width: 800px)`)
 
-class App extends React.Component {
+class Layout extends React.Component {
   static propTypes = {
+    languages: PropTypes.array.isRequired,
+    me: PropTypes.object.isRequired,
+    navElements: PropTypes.array.isRequired,
+    socialHeader: PropTypes.string.isRequired,
     children: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
   }
   state = {
     mql: mql,
     menuVisible: false,
+    modalClose: false,
   }
   componentWillMount = () => {
     mql.addListener(this.mediaQueryChanged)
@@ -25,32 +30,41 @@ class App extends React.Component {
   }
   mediaQueryChanged = () => {
     this.setState({fullNav: this.state.mql.matches})
+    this.state.fullNav && this.state.menuVisible && this.setState({menuVisible: false})
   }
   openMobileMenu = () => {
     this.setState({menuVisible: true})
   }
   closeMobileMenu = () => {
-    this.setState({menuVisible: false})
+    this.setState({
+      menuVisible: false,
+      modalClose: true,
+    })
   }
+
   render () {
-    const {contentfulPerson: me} = this.props.data
+    const {languages, me, socialHeader, navElements} = this.props
     return (
       <div className={mainContainer}>
         <div className={contentContainer}>
           <header>
-            <NavContainer me={me} onClick={this.openMobileMenu} fullNav={this.state.fullNav}/>
+            <NavContainer
+              me={me} navElements={navElements} onClick={this.openMobileMenu}
+              fullNav={this.state.fullNav}/>
           </header>
           <div className={pageContainer}>
             {this.props.children()}
             <div className={footerPadding}/>
           </div>
-          <Footer me={me}/>
+          <Footer me={me} languages={languages}/>
         </div>
-        <MobileMenuContainer me={me} visible={this.state.menuVisible} closeMenuAction={this.closeMobileMenu}/>
+        <MobileMenuContainer
+          me={me} navElements={navElements} socialHeader={socialHeader}
+          visible={this.state.menuVisible} modalClose={this.state.modalClose} closeMenuAction={this.closeMobileMenu}/>
         <Overlay visible={this.state.menuVisible} onClick={this.closeMobileMenu}/>
       </div>
     )
   }
 }
 
-export default App
+export default Layout

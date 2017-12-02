@@ -1,37 +1,36 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { getUserLangKey } from 'ptz-i18n'
+import { navigateTo } from 'gatsby-link'
 
-function WelcomeBanner ({data: {contentfulHome: home, contentfulPerson: person}}) {
-  return (
-    <div>
-      <div>{home.bannerText}</div>
-      <div>{person.fullName}</div>
-      <div>{person.jobTitle}</div>
-    </div>
-  )
-}
+class RedirectIndex extends React.PureComponent {
+  constructor (args) {
+    super(args)
 
-WelcomeBanner.propTypes = {
-  data: PropTypes.object.isRequired,
-}
+    if (typeof window !== 'undefined') {
+      const {langs, defaultLangKey} = args.data.site.siteMetadata.languages
+      const langKey = getUserLangKey(langs, defaultLangKey)
+      const homeUrl = `/${langKey}/`
 
-export default function IndexPage ({data}) {
-  return (
-    <WelcomeBanner data={data}/>
-  )
-}
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export const query = graphql`
-  query HomeEnQuery {
-    contentfulPerson {
-      fullName
-      jobTitle
+      navigateTo(homeUrl)
     }
-    contentfulHome(node_locale: {eq: "en-US"}) {
-      bannerText
+  }
+
+  render () {
+    return (<div/>)
+  }
+}
+
+export default RedirectIndex
+
+export const pageQuery = graphql`
+  query IndexQuery {    
+    site{
+      siteMetadata{
+        languages {
+          defaultLangKey
+          langs
+        }
+      }
     }
   }
 `

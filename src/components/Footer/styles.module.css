@@ -38,3 +38,9 @@
   width: 100%;
 }
 
+.localeInfo {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
