@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NavContainer from '../../containers/Nav/NavContainer'
+import TopNav from '../../components/TopNav/TopNav'
 import Footer from '../../components/Footer/Footer'
-import Overlay from '../Overlay/Overlay'
-import MobileMenuContainer from '../../containers/MobileMenu/MobileMenuContainer'
+import Overlay from '../../components/Overlay/Overlay'
+import MobileMenu from '../../components/MobileMenu/MobileMenu'
 import { mainContainer, contentContainer, pageContainer, footerPadding } from './styles.module.css'
 
 const mql = window.matchMedia(`(min-width: 800px)`)
 
-class Layout extends React.Component {
+class App extends React.Component {
   static propTypes = {
     languages: PropTypes.array.isRequired,
     me: PropTypes.object.isRequired,
@@ -48,7 +48,7 @@ class Layout extends React.Component {
       <div className={mainContainer}>
         <div className={contentContainer}>
           <header>
-            <NavContainer
+            <TopNav
               me={me} navElements={navElements} onClick={this.openMobileMenu}
               fullNav={this.state.fullNav}/>
           </header>
@@ -58,7 +58,7 @@ class Layout extends React.Component {
           </div>
           <Footer me={me} languages={languages}/>
         </div>
-        <MobileMenuContainer
+        <MobileMenu
           me={me} navElements={navElements} socialHeader={socialHeader}
           visible={this.state.menuVisible} modalClose={this.state.modalClose} closeMenuAction={this.closeMobileMenu}/>
         <Overlay visible={this.state.menuVisible} onClick={this.closeMobileMenu}/>
@@ -67,4 +67,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout
+export default App

@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SlideMenu from '../../components/SlideMenu/SlideMenu'
-import SlideMenuLink from '../../components/SlideMenuLink/SlideMenuLink'
-import Github from 'react-icons/lib/fa/github'
-import LinkedIn from 'react-icons/lib/fa/linkedin'
-import { linkList, link, socialEntry, socialIcon, socialList } from './styles.module.css'
+import SlideMenu from '../SlideMenu/SlideMenu'
+import SlideMenuLink from '../SlideMenuLink/SlideMenuLink'
+import SocialNav from '../SocialNav/SocialNav'
+import { linkList, link } from './styles.module.css'
 
-export default function MobileMenuContainer ({me, navElements, socialHeader, modalClose, visible, closeMenuAction}) {
+export default function MobileMenu ({me, navElements, socialHeader, modalClose, visible, closeMenuAction}) {
   return (
     <SlideMenu visible={visible} modalClose={modalClose} closeMenuAction={closeMenuAction}>
       <ul className={linkList}>
@@ -28,22 +27,11 @@ export default function MobileMenuContainer ({me, navElements, socialHeader, mod
       </ul>
       <hr/>
       <span>{socialHeader}</span>
-      <ul className={socialList}>
-        <li className={socialEntry}>
-          <a className={socialIcon} href={me.github}>
-            <Github/>
-          </a>
-        </li>
-        <li className={socialEntry}>
-          <a className={socialIcon} href={me.linkedIn}>
-            <LinkedIn/>
-          </a>
-        </li>
-      </ul>
+      <SocialNav me={me}/>
     </SlideMenu>
   )
 }
-MobileMenuContainer.propTypes = {
+MobileMenu.propTypes = {
   me: PropTypes.object.isRequired,
   navElements: PropTypes.array.isRequired,
   socialHeader: PropTypes.string.isRequired,

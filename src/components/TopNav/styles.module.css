@@ -8,7 +8,7 @@
 
 .navBarContent {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 1300px;
   display: flex;
   justify-content: space-between;
   padding: 0 24px;
@@ -25,31 +25,15 @@
 }
 
 .navElement:hover {
-  transform: scale(1.1);
-}
-
-.socialList {
-  composes: socialList from '../../sharedStyles/styles.module.css';
-}
-
-.socialIcon {
-  composes: socialIcon from '../../sharedStyles/styles.module.css';
+  /*transform: scale(1.1);*/
 }
 
 .link {
   composes: link from '../../sharedStyles/styles.module.css';
-  padding: 0 0.7rem 0 0 ;
+  margin: 0 1.4rem 0 0;
 }
 
 .activeNavigation {
-}
-
-.socialEntry {
-  composes: socialEntry from '../../sharedStyles/styles.module.css';
-}
-
-.socialEntry:hover {
-  transform: scale(1.1);
 }
 
 .navIcon {

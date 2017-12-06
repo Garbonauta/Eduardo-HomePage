@@ -1,0 +1,19 @@
+.blogEntry {
+  padding: 2rem 0;
+}
+
+.blogTitle {
+  composes: header from '../../sharedStyles/styles.module.css';
+  text-decoration: none;
+  margin: 0;
+}
+
+.blogSummary {
+  margin: 0;
+}
+
+.blogFoot {
+  composes: flexRow from '../../sharedStyles/styles.module.css';
+  justify-content: space-between;
+  font-size: 0.8rem;
+}

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import LanguagePicker from '../LanguagePicker/LanguagePicker'
 import {
   footerElement, developed, copyright, link, jsLink,
   attributions, contentfulLogo, localeInfo,
 } from './styles.module.css'
-import LanguagePicker from '../LanguagePicker/LanguagePicker'
 
 export default function Footer ({ languages, me }) {
   return (

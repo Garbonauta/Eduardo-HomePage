@@ -12,19 +12,17 @@ html, body {
   text-decoration: none;
 }
 
-.socialEntry {
-  display: inline-block;
-  font-size: 2em;
-  margin-right: 0.6rem;
+.link:hover {
+  opacity: 0.8;
 }
 
-.socialList {
+.linkList {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.link:visited, .link:link, .socialIcon:visited, .socialIcon:link {
+.link:visited, .link:link {
   color: inherit;
 }
 
@@ -34,4 +32,21 @@ html, body {
 
 .footerPadding {
   height: 164px;
+}
+
+.pageContent {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 0 24px;
+  box-shadow: 0 3px 10px rgba(25, 17, 34, 0.05);
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.header {
+  color: #242424;
 }

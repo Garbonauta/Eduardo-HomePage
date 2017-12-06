@@ -1,0 +1,9 @@
+.categoryTag {
+  text-align: center;
+  padding: 0 4px;
+  font-size: 14px;
+  background-color: #4C4C4C;
+  color: white;
+  border-radius: 2px;
+  height: fit-content;
+}

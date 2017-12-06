@@ -1,0 +1,17 @@
+.socialEntry {
+  display: inline-block;
+  font-size: 2em;
+  margin-right: 0.6rem;
+}
+
+.socialList {
+  composes: linkList from '../../sharedStyles/styles.module.css';
+}
+
+.socialIcon:visited, .socialIcon:link {
+  color: inherit;
+}
+
+.socialIcon:hover {
+  opacity: 0.8;
+}

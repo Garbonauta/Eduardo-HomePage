@@ -1,37 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import BlogList from '../components/BlogList/BlogList'
+import { removeNodeContentfulArray } from '../utils/utils'
+import { pageContent } from '../sharedStyles/styles.module.css'
 
-function WelcomeBanner ({data: {contentfulHome: home, contentfulPerson: person}}) {
+export default function IndexPage ({data: {me, posts, home}}) {
   return (
-    <div>
-      <div>{home.bannerText}</div>
-      <div>{person.fullName}</div>
-      <div>{person.jobTitle}</div>
+    <div className={pageContent}>
+      <BlogList language='en' posts={removeNodeContentfulArray(posts)}/>
     </div>
   )
 }
-
-WelcomeBanner.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default function IndexPage ({data}) {
-  return (
-    <WelcomeBanner data={data}/>
-  )
-}
 IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    me: PropTypes.object.isRequired,
+    posts: PropTypes.object.isRequired,
+    home: PropTypes.object.isRequired,
+  }),
 }
 
 export const query = graphql`
-  query HomeEnQuery {
-    contentfulPerson {
-      fullName
-      jobTitle
-    }
-    contentfulHome(node_locale: {eq: "en-US"}) {
-      bannerText
+query HomeEnQuery($locale: String = "en-US", $me: String = "Eduardo Moreno") {
+  me: allContentfulPerson(filter: {fullName: {eq: $me}, node_locale: {eq: $locale}}) {
+    edges {
+      node {
+        fullName
+        jobTitle
+      }
     }
   }
+  posts: allContentfulBlogPost(filter: {author: {eq: $me}, node_locale: {eq: $locale}},
+  sort: {fields: [createdAt], order: DESC}) {
+    edges {
+      node {
+        id
+        slug
+        title
+        author
+        category
+        createdAt
+        summary
+      }
+    }
+  }
+  home: contentfulHome(node_locale: {eq: $locale}) {
+    bannerText
+  }
+}
 `

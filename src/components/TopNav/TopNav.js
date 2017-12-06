@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import Github from 'react-icons/lib/fa/github'
-import LinkedIn from 'react-icons/lib/fa/linkedin'
+import SocialNav from '../SocialNav/SocialNav'
 import MenuIcon from 'react-icons/lib/md/menu'
 import {
-  activeNavigation, link, navBar, navBarContent, navElement, navList, socialEntry, socialIcon,
-  socialList, navIcon, displayNone, displayBlock,
+  activeNavigation, link, navBar, navBarContent, navElement, navList,
+  navIcon, displayNone, displayBlock,
 } from './styles.module.css'
 
-export default function NavContainer ({me, navElements, onClick, fullNav}) {
+export default function TopNav ({me, navElements, onClick, fullNav}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
@@ -30,18 +29,9 @@ export default function NavContainer ({me, navElements, onClick, fullNav}) {
             })
           }
         </ul>
-        <ul className={`${socialList} ${ fullNav ? displayBlock : displayNone}`}>
-          <li className={socialEntry}>
-            <a className={socialIcon} href={me.github}>
-              <Github/>
-            </a>
-          </li>
-          <li className={socialEntry}>
-            <a className={socialIcon} href={me.linkedIn}>
-              <LinkedIn/>
-            </a>
-          </li>
-        </ul>
+        <div className={fullNav ? displayBlock : displayNone}>
+          <SocialNav me={me}/>
+        </div>
         <div className={`${navIcon} ${ fullNav ? displayNone : displayBlock}`} onClick={onClick}/>
         <div className={`${navIcon} ${ fullNav ? displayNone : displayBlock}`} onClick={onClick}>
           <MenuIcon/>
@@ -50,7 +40,7 @@ export default function NavContainer ({me, navElements, onClick, fullNav}) {
     </nav>
   )
 }
-NavContainer.propTypes = {
+TopNav.propTypes = {
   fullNav: PropTypes.bool.isRequired,
   me: PropTypes.object.isRequired,
   navElements: PropTypes.array.isRequired,
