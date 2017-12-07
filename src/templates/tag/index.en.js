@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import TagPage from '../../components/TagPage/TagPage'
 
-export default function Tag ({data}) {
+export default function Tag ({data: {contentfulTag}}) {
   return (
-    <TagPage data={data.contentfulTag}/>
+    <TagPage data={contentfulTag}/>
   )
 }
 Tag.propTypes = {
@@ -22,7 +22,11 @@ export const query = graphql`
         id
         slug
         title
-        category
+        category {
+          id
+          slug
+          display
+        }
         createdAt
         summary
         author

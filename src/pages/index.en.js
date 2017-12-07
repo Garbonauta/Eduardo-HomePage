@@ -37,7 +37,11 @@ query HomeEnQuery($locale: String = "en-US", $me: String = "Eduardo Moreno") {
         slug
         title
         author
-        category
+        category {
+          id
+          slug
+          display
+        }
         createdAt
         summary
       }

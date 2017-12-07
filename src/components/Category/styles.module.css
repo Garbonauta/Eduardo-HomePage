@@ -1,9 +1,12 @@
 .categoryTag {
   text-align: center;
   padding: 0 4px;
-  font-size: 14px;
+  font-size: 13px;
+  height: 26px;
   background-color: #4C4C4C;
   color: white;
   border-radius: 2px;
   height: fit-content;
+  text-decoration: none;
+  font-weight: bold;
 }

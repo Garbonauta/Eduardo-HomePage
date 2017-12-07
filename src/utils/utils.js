@@ -8,3 +8,19 @@ export function removeNodeContentfulArray (posts) {
     return edge.node
   })
 }
+
+export function sortContentfulArrayByCreateAt (array) {
+  return array.sort((a, b) => {
+    const aDate = new Date(a.createdAt)
+    const bDate = new Date(b.createdAt)
+    return bDate - aDate
+  })
+}
+
+export function formatSlugForTagUrl (language, slug) {
+  return `${language}/tag/${slug}`
+}
+
+export function formatSlugForCategoryUrl (language, slug) {
+  return `${language}/category/${slug}`
+}

@@ -3,7 +3,9 @@ const languages = require('./src/data/languages')
 
 module.exports = {
   siteMetadata: {
-    title: `Eduardo Moreno's HomePage`,
+    title: `Eduardo Moreno`,
+    author: `Eduardo Moreno`,
+    siteUrl: `https://wwww.garbonauta.com`,
     languages,
   },
   plugins: [

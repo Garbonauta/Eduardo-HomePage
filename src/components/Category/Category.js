@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'gatsby-link'
 import { categoryTag } from './styles.module.css'
 
 export default function Category ({name, to}) {
   return (
-    <div className={categoryTag}>{name}</div>
+    <Link className={categoryTag} to={to}>
+      {name.toUpperCase()}
+    </Link>
   )
 }
 Category.propTypes = {

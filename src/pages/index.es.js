@@ -37,7 +37,11 @@ query HomeEsQuery($locale: String = "es", $me: String = "Eduardo Moreno") {
         slug
         title
         author
-        category
+        category {
+          id
+          slug
+          display
+        }
         createdAt
         summary
       }

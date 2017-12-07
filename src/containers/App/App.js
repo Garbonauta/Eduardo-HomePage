@@ -19,7 +19,7 @@ class App extends React.Component {
   state = {
     mql: mql,
     menuVisible: false,
-    modalClose: false,
+    overflowClose: false,
   }
   componentWillMount = () => {
     mql.addListener(this.mediaQueryChanged)
@@ -38,7 +38,7 @@ class App extends React.Component {
   closeMobileMenu = () => {
     this.setState({
       menuVisible: false,
-      modalClose: true,
+      overflowClose: true,
     })
   }
 
@@ -60,7 +60,7 @@ class App extends React.Component {
         </div>
         <MobileMenu
           me={me} navElements={navElements} socialHeader={socialHeader}
-          visible={this.state.menuVisible} modalClose={this.state.modalClose} closeMenuAction={this.closeMobileMenu}/>
+          visible={this.state.menuVisible} modalClose={this.state.overflowClose} closeMenuAction={this.closeMobileMenu}/>
         <Overlay visible={this.state.menuVisible} onClick={this.closeMobileMenu}/>
       </div>
     )
