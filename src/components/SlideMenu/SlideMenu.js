@@ -5,12 +5,10 @@ import { menu, slideIn, slideOut, menuContent, closeSign } from './styles.module
 
 export default function SlideMenu ({visible, modalClose, closeMenuAction, children}) {
   return (
-    <div className={menu}>
-      <div id='slider-menu' className={visible ? slideIn : (modalClose ? slideOut : '')}>
-        <Close className={closeSign} onClick={closeMenuAction}/>
-        <div className={menuContent}>
-          {children}
-        </div>
+    <div id='slider-menu' className={`${menu} ${visible ? slideIn : (modalClose ? slideOut : '')}`}>
+      <Close className={closeSign} onClick={closeMenuAction}/>
+      <div className={menuContent}>
+        {children}
       </div>
     </div>
   )

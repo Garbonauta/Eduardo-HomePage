@@ -39,6 +39,13 @@ class Layout extends React.Component {
       <div>
         <Helmet>
           <title>{person.fullName}</title>
+          <style type='text/css'>{`
+            #___gatsby, #___gatsby >div {
+              width: 100%;
+              height: 100%;
+            }
+          `}
+          </style>
         </Helmet>
         <App
           languages={langsMenu}
