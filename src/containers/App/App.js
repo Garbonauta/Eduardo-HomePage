@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer'
 import Overlay from '../../components/Overlay/Overlay'
 import MobileMenu from '../../components/MobileMenu/MobileMenu'
 import { mainContainer, contentContainer, pageContainer, footerPadding } from './styles.module.css'
+import 'prismjs-okaidia-theme/prism-okaidia.css'
 
 const mql = window.matchMedia(`(min-width: 800px)`)
 

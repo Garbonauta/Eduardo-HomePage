@@ -4,15 +4,16 @@ import BlogList from '../BlogList/BlogList'
 import { pageContent } from './styles.module.css'
 import { sortContentfulArrayByCreateAt } from '../../utils/utils'
 
-export default function CategoryPage ({data: {slug, display, posts}}) {
+export default function CategoryPage ({language, data: {slug, display, posts}}) {
   sortContentfulArrayByCreateAt(posts)
   return (
     <div className={pageContent}>
-      <BlogList language={'en'} posts={posts}/>
+      <BlogList language={language} posts={posts}/>
     </div>
   )
 }
 CategoryPage.propTypes = {
+  language: PropTypes.string.isRequired,
   data: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     display: PropTypes.string.isRequired,

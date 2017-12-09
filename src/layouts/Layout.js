@@ -38,7 +38,6 @@ class Layout extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>{person.fullName}</title>
           <style type='text/css'>{`
             #___gatsby, #___gatsby >div {
               width: 100%;
