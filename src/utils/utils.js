@@ -1,3 +1,5 @@
+import urlJoin from 'url-join'
+
 export function getLocaleDateFromString (locale, dateString) {
   var options = { year: 'numeric', month: 'long', day: 'numeric' }
   return new Date(dateString).toLocaleString(locale, options)
@@ -18,9 +20,9 @@ export function sortContentfulArrayByCreateAt (array) {
 }
 
 export function formatSlugForTagUrl (language, slug) {
-  return `${language}/tag/${slug}`
+  return urlJoin(language, 'tag', slug)
 }
 
 export function formatSlugForCategoryUrl (language, slug) {
-  return `${language}/category/${slug}`
+  return urlJoin(language, 'category', slug)
 }

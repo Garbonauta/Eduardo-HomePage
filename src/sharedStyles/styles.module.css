@@ -1,11 +1,15 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+}
+
+body {
   font-family: sans-serif;
   color: #5F5F5F;
   background-color: #F9F9F9;
+}
+
+html {
   overflow: auto;
 }
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import App from '../containers/App/App'
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n'
 
@@ -36,24 +35,13 @@ class Layout extends React.Component {
     const {children, data: {person}} = this.props
 
     return (
-      <div>
-        <Helmet>
-          <style type='text/css'>{`
-            #___gatsby, #___gatsby >div {
-              width: 100%;
-              height: 100%;
-            }
-          `}
-          </style>
-        </Helmet>
-        <App
-          languages={langsMenu}
-          me={person}
-          navElements={navElements}
-          socialHeader={'Find me on:'}>
-          {children}
-        </App>
-      </div>
+      <App
+        languages={langsMenu}
+        me={person}
+        navElements={navElements}
+        socialHeader={'Find me on:'}>
+        {children}
+      </App>
     )
   }
 }
