@@ -4,7 +4,6 @@ import TopNav from '../../components/TopNav/TopNav'
 import Footer from '../../components/Footer/Footer'
 import Overlay from '../../components/Overlay/Overlay'
 import MobileMenu from '../../components/MobileMenu/MobileMenu'
-import ScrollToTopContainer from '../ScrollToTop/ScrollToTopContainer'
 import { mainContainer, contentContainer, pageContainer, footerPadding } from './styles.module.css'
 import 'prismjs-okaidia-theme/prism-okaidia.css'
 
@@ -59,7 +58,6 @@ class App extends React.Component {
             <div className={footerPadding}/>
           </div>
           <Footer me={me} languages={languages}/>
-          <ScrollToTopContainer/>
         </div>
         <MobileMenu
           me={me} navElements={navElements} socialHeader={socialHeader}

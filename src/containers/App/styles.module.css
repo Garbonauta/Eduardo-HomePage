@@ -20,6 +20,4 @@
 
 .footerPadding {
   composes: footerPadding from '../../sharedStyles/styles.module.css';
-  background: none;
-  width: 100%
 }
