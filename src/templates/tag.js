@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { TagPage } from 'components'
 
-export default function Tag ({data: {site: {siteMetadata: {title: siteTitle}}, contentfulTag}}) {
+export default function Tag ({data: {site: {siteMetadata: {title: siteTitle}}, contentfulTag}, pathContext: {langKey, locale, slug}}) {
   return (
     <div>
       <Helmet>
         <title>{`${contentfulTag.display} | ${siteTitle}`}</title>
       </Helmet>
-      <TagPage language='es' data={contentfulTag}/>
+      <TagPage language={langKey} data={contentfulTag}/>
     </div>
   )
 }
@@ -22,16 +22,21 @@ Tag.propTypes = {
     }).isRequired,
     contentfulTag: PropTypes.object.isRequired,
   }).isRequired,
+  pathContext: PropTypes.shape({
+    langKey: PropTypes.string.isRequired,
+    locale: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export const query = graphql`
-  query TagEsQuery($slug: String!, $node_locale: String = "es") {
+  query TagQuery($slug: String!, $locale: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    contentfulTag(slug: {eq: $slug}, node_locale: {eq: $node_locale}) {
+    contentfulTag(slug: {eq: $slug}, node_locale: {eq: $locale}) {
       slug
       display
       posts {

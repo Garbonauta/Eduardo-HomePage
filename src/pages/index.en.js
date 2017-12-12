@@ -1,21 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { BlogList } from 'components'
 import Helmet from 'react-helmet'
-import { removeNodeContentfulArray } from 'utils/utils'
+import { IndexPage } from 'components'
 import { pageContent } from 'sharedStyles/styles.module.css'
 
-export default function IndexPage ({data: {site: {siteMetadata: {title: siteTitle}}, me, posts, home}}, props) {
+export default function index ({data}) {
+  const {site: {siteMetadata: {title: siteTitle}}} = data
   return (
     <div className={pageContent}>
       <Helmet>
         <title>{`Home | ${siteTitle}`}</title>
       </Helmet>
-      <BlogList language='en' posts={removeNodeContentfulArray(posts.edges)}/>
+      <IndexPage language='en' data={data}/>
     </div>
   )
 }
-IndexPage.propTypes = {
+index.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({

@@ -41,10 +41,12 @@ exports.createPages = ({graphql, boundActionCreators}) => {
         const lang = getLanguageFromLocale(node.node_locale)
         createPage({
           path: `${lang}/post/${node.slug}`,
-          component: path.resolve(`./src/templates/blogPost/index.${lang}.js`),
+          component: path.resolve(`./src/templates/blog-post.js`),
           layout: lang,
           context: {
             slug: node.slug,
+            langKey: lang,
+            locale: node.node_locale,
           },
         })
       })
@@ -70,10 +72,12 @@ exports.createPages = ({graphql, boundActionCreators}) => {
             const lang = getLanguageFromLocale(node.node_locale)
             createPage({
               path: `${lang}/tag/${node.slug}`,
-              component: path.resolve(`./src/templates/tag/index.${lang}.js`),
+              component: path.resolve(`./src/templates/tag.js`),
               layout: lang,
               context: {
                 slug: node.slug,
+                langKey: lang,
+                locale: node.node_locale,
               },
             })
           })
