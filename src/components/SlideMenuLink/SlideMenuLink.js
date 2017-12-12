@@ -9,4 +9,5 @@ SlideMenuLink.propTypes = {
   className: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 }

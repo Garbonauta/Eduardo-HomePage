@@ -9,11 +9,3 @@
   composes: flexRow from '../../sharedStyles/styles.module.css';
   justify-content: space-between;
 }
-
-.authorContainer {
-
-}
-
-.tagContainer {
-  max-width: 300px;
-}

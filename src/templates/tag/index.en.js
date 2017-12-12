@@ -38,14 +38,11 @@ export const query = graphql`
         id
         slug
         title
-        category {
-          id
-          slug
-          display
-        }
         createdAt
         summary
-        author
+        author {
+          fullName
+        }
       }
     }
   }

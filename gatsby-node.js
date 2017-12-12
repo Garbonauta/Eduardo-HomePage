@@ -71,36 +71,6 @@ exports.createPages = ({graphql, boundActionCreators}) => {
           })
           resolve()
         })
-          .then(() => {
-            graphql(`
-              {
-                allContentfulCategory {
-                  edges {
-                    node {
-                      slug
-                      node_locale
-                    }
-                  }
-                }
-              }
-            `).then(result => {
-              if (result.error) {
-                reject(result.error)
-              }
-              result.data.allContentfulCategory.edges.map(({node}) => {
-                const lang = getLanguageFromLocale(node.node_locale)
-                createPage({
-                  path: `${lang}/category/${node.slug}`,
-                  component: path.resolve(`./src/templates/category/index.${lang}.js`),
-                  layout: lang,
-                  context: {
-                    slug: node.slug,
-                  },
-                })
-              })
-              resolve()
-            })
-          })
       })
   })
 }

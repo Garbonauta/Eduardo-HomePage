@@ -22,7 +22,3 @@ export function sortContentfulArrayByCreateAt (array) {
 export function formatSlugForTagUrl (language, slug) {
   return urlJoin(language, 'tag', slug)
 }
-
-export function formatSlugForCategoryUrl (language, slug) {
-  return urlJoin(language, 'category', slug)
-}

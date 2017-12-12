@@ -1,0 +1,17 @@
+.socialRow {
+  composes: flexRow from '../../sharedStyles/styles.module.css';
+  justify-content: space-evenly;
+}
+
+.flexRow {
+  composes: flexRow from '../../sharedStyles/styles.module.css';
+}
+
+.label {
+  margin: 0;
+}
+
+.icon {
+  margin-right: 3px;
+  cursor: pointer;
+}

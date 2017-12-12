@@ -31,13 +31,11 @@ export const query = graphql`
     contentfulBlogPost(slug: { eq: $slug }, node_locale: {eq: $node_locale}) {
       slug
       title
-      author
-      category {
-        id
-        slug
-        display
+      author {
+        fullName
       }
       createdAt
+      summary
       content {
         childMarkdownRemark {
           html

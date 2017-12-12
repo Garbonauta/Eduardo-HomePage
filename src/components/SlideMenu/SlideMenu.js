@@ -17,4 +17,5 @@ SlideMenu.propTypes = {
   visible: PropTypes.bool.isRequired,
   modalClose: PropTypes.bool.isRequired,
   closeMenuAction: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 }

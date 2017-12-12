@@ -21,10 +21,9 @@ TagPage.propTypes = {
       id: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      category: PropTypes.array.isRequired,
       createdAt: PropTypes.string.isRequired,
       summary: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
+      author: PropTypes.object.isRequired,
     })).isRequired,
   }).isRequired,
 }

@@ -43,18 +43,15 @@ query HomeEnQuery($locale: String = "en-US", $me: String = "Eduardo Moreno") {
       }
     }
   }
-  posts: allContentfulBlogPost(filter: {author: {eq: $me}, node_locale: {eq: $locale}},
+  posts: allContentfulBlogPost(filter: {node_locale: {eq: $locale}},
   sort: {fields: [createdAt], order: DESC}) {
     edges {
       node {
         id
         slug
         title
-        author
-        category {
-          id
-          slug
-          display
+        author {
+          fullName
         }
         createdAt
         summary

@@ -12,7 +12,7 @@ export default function TopNav ({me, navElements, onClick, fullNav}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
-        <ul className={`${navList} ${ fullNav ? displayBlock : displayNone}`}>
+        <ul className={`${navList} ${fullNav ? displayBlock : displayNone}`}>
           {
             navElements.map(element => {
               return (
@@ -32,8 +32,8 @@ export default function TopNav ({me, navElements, onClick, fullNav}) {
         <div className={fullNav ? displayBlock : displayNone}>
           <SocialNav me={me}/>
         </div>
-        <div className={`${navIcon} ${ fullNav ? displayNone : displayBlock}`} onClick={onClick}/>
-        <div className={`${navIcon} ${ fullNav ? displayNone : displayBlock}`} onClick={onClick}>
+        <div className={`${navIcon} ${fullNav ? displayNone : displayBlock}`} onClick={onClick}/>
+        <div className={`${navIcon} ${fullNav ? displayNone : displayBlock}`} onClick={onClick}>
           <MenuIcon/>
         </div>
       </div>

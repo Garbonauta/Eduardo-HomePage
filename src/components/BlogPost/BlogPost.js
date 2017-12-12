@@ -2,42 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import urlJoin from 'url-join'
 import BlogContent from '../BlogContent/BlogContent'
-import Category from '../Category/Category'
 import Comments from '../Comments/Comments'
-import Tag from '../Tag/Tag'
-import { getLocaleDateFromString, formatSlugForTagUrl, formatSlugForCategoryUrl } from '../../utils/utils'
-import { pageContent, blogInfoContainer, flexRow, authorContainer, tagContainer } from './styles.module.css'
+import BlogSocial from '../BlogSocial/BlogSocial'
+import TagList from '../TagList/TagList'
+import { getLocaleDateFromString } from '../../utils/utils'
+import { pageContent, blogInfoContainer, flexRow } from './styles.module.css'
 
-function BlogInfoContainer ({language, author, category: {id, slug: categorySlug, display: categoryDisplay}, tags}) {
+function BlogInfoContainer ({language, blogUrl, blogTitle, blogSummary, tags}) {
   return (
     <div className={blogInfoContainer}>
-      <div className={authorContainer}>{author}</div>
+      <BlogSocial
+        language={language}
+        url={blogUrl}
+        title={blogTitle}
+        summary={blogSummary} />
       <div className={flexRow}>
-        <div className={tagContainer}>
-          {
-            tags.map(({id, slug: tagSlug, display}) => {
-              return <Tag key={id} name={display} to={formatSlugForTagUrl(language, tagSlug)}/>
-            })
-          }
-        </div>
-        <Category name={categoryDisplay} to={formatSlugForCategoryUrl(language, categorySlug)}/>
+        <TagList language={language} tags={tags}/>
       </div>
     </div>
   )
 }
 BlogInfoContainer.propTypes = {
   language: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  category: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    display: PropTypes.string.isRequired,
-  }).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    display: PropTypes.string.isRequired,
-  })).isRequired,
+  blogUrl: PropTypes.string.isRequired,
+  blogTitle: PropTypes.string.isRequired,
+  blogSummary: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
 }
 
 export default function BlogPost (
@@ -53,8 +43,8 @@ export default function BlogPost (
       slug,
       title,
       author,
-      category,
       createdAt,
+      summary,
       content: {
         childMarkdownRemark: {
           html,
@@ -68,8 +58,9 @@ export default function BlogPost (
       <BlogContent content={html}/>
       <BlogInfoContainer
         language={language}
-        author={author}
-        category={category[0]}
+        blogUrl={blogUrl}
+        blogTitle={title}
+        blogSummary={summary}
         tags={tags}/>
       <Comments slug={slug} title={title} url={blogUrl}/>
     </div>
@@ -86,9 +77,9 @@ BlogPost.propTypes = {
   post: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    category: PropTypes.array.isRequired,
+    author: PropTypes.object.isRequired,
     createdAt: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
     content: PropTypes.shape({
       childMarkdownRemark: PropTypes.shape({
         html: PropTypes.string.isRequired,

@@ -1,3 +1,0 @@
-.pageContent {
-  composes: pageContent from '../../sharedStyles/styles.module.css';
-}

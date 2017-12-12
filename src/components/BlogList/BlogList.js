@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import { getLocaleDateFromString, formatSlugForCategoryUrl } from '../../utils/utils'
-import { blogEntry, blogTitle, blogSummary, blogFoot, supplementalInfo, categoryTag } from './styles.module.css'
-import Category from '../Category/Category'
+import { getLocaleDateFromString } from '../../utils/utils'
+import { blogEntry, blogTitle, blogSummary, blogFoot, supplementalInfo } from './styles.module.css'
 
 function formatDateString (locale, publishDate) {
   const dateString = getLocaleDateFromString(locale, publishDate)
@@ -25,14 +24,13 @@ function formatSlugForLang (language, slug) {
   return `${language}/post/${slug}`
 }
 
-function BlogListFooter ({language, author, createdAt, category: {id, slug, display: categoryDisplay}}) {
+function BlogListFooter ({language, author, createdAt}) {
   return (
     <div className={blogFoot}>
       <div className={supplementalInfo}>
         <span>{author}</span>
         <span>{formatDateString(language, createdAt)}</span>
       </div>
-      <Category name={categoryDisplay} to={formatSlugForCategoryUrl(language, slug)}/>
     </div>
   )
 }
@@ -40,11 +38,6 @@ function BlogListFooter ({language, author, createdAt, category: {id, slug, disp
 BlogListFooter.propTypes = {
   language: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
-  category: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
-    display: PropTypes.string.isRequired,
-  }).isRequired,
   createdAt: PropTypes.string.isRequired,
 }
 
@@ -56,10 +49,9 @@ export default function BlogList ({posts, language}) {
           id,
           slug,
           title,
-          category,
           createdAt,
           summary,
-          author,
+          author: {fullName},
         } = post
         return (
           <div key={id} className={blogEntry}>
@@ -69,8 +61,7 @@ export default function BlogList ({posts, language}) {
             <p className={blogSummary}>{summary}</p>
             <BlogListFooter
               language={language}
-              author={author}
-              category={category[0]}
+              author={fullName}
               createdAt={createdAt}/>
           </div>
         )
@@ -84,9 +75,10 @@ BlogList.propTypes = {
     id: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    category: PropTypes.array.isRequired,
     createdAt: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      fullName: PropTypes.string.isRequired,
+    }).isRequired,
   })),
 }
