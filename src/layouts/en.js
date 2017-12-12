@@ -1,10 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from 'layouts/Layout'
+import { addLocaleData } from 'react-intl'
+import messages from 'data/messages/en'
+import en from 'react-intl/locale-data/en'
+import 'intl/locale-data/jsonp/en'
+
+addLocaleData(en)
 
 export default function IndexTemplate ({children, data}) {
   return (
-    <Layout data={data}>
+    <Layout
+      data={data}
+      i18nMessages={messages}>
       {children}
     </Layout>
   )

@@ -15,18 +15,8 @@
 .copyright {
 }
 
-.developed {
-  margin-top: 0.5rem;
-  font-size: 0.7rem;
-}
-
 .link {
   composes: link from '../../sharedStyles/styles.module.css';
-}
-
-.jsLink {
-  composes: link from '../../sharedStyles/styles.module.css';
-  font-weight: bold;
 }
 
 .attributions {

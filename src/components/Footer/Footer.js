@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { LanguagePicker } from 'components'
+import { FormattedMessage } from 'react-intl'
 import {
-  footerElement, developed, copyright, link, jsLink,
+  footerElement, copyright, link,
   attributions, contentfulLogo, localeInfo,
 } from './styles.module.css'
 
@@ -12,15 +13,10 @@ export default function Footer ({ languages, me }) {
       <div className={localeInfo}>{
         <LanguagePicker languages={languages} />
       }</div>
-      <div className={copyright}>{`Copyright \u00A9 ${me.fullName}. ${(new Date()).getFullYear()} All rights reserved.`}</div>
-      <div className={developed}>
-        <span>{`Developed by ${me.fullName}. `}</span>
-        <span>
-          {'Built with '}
-          <a href='https://reactjs.org/' className={jsLink}>{'React'}</a>
-          {' and '}
-          <a href='https://www.gatsbyjs.org/' className={jsLink}>{'GatsbyJS'}</a>
-        </span>
+      <div className={copyright}>
+        <FormattedMessage id='footer.copyright'/>
+        {` \u00A9 ${me.fullName}. ${(new Date()).getFullYear()}. `}
+        <FormattedMessage id='footer.rights'/>
       </div>
       <div className={attributions}>
         <a

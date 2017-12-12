@@ -3,29 +3,19 @@ import PropTypes from 'prop-types'
 import urlJoin from 'url-join'
 import { BlogContent, Comments, BlogSocial, TagList } from 'components'
 import { getLocaleDateFromString } from 'utils/utils'
+import { FormattedMessage } from 'react-intl'
 import { pageContent, blogInfoContainer, tagRow } from './styles.module.css'
-
-function getLanguageLabel (language) {
-  switch (language) {
-    case 'en':
-      return 'In this post: '
-    case 'es':
-      return 'En este post: '
-    default:
-      return null
-  }
-}
 
 function BlogInfoContainer ({language, blogUrl, blogTitle, blogSummary, tags}) {
   return (
     <div className={blogInfoContainer}>
       <div className={tagRow}>
-        {getLanguageLabel(language)}
+        <FormattedMessage id='post.tagLabel'/>
+        {': '}
         <TagList language={language} tags={tags}/>
       </div>
       <hr/>
       <BlogSocial
-        language={language}
         url={blogUrl}
         title={blogTitle}
         summary={blogSummary} />
@@ -64,7 +54,9 @@ export default function BlogPost (
   return (
     <div className={pageContent}>
       <h1>{title}</h1>
-      <div>{getLocaleDateFromString(language, createdAt)}</div>
+      <div>
+        {getLocaleDateFromString(createdAt)}
+      </div>
       <BlogContent content={html}/>
       <BlogInfoContainer
         language={language}

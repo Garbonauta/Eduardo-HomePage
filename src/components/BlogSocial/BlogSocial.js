@@ -1,20 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { ShareButtons, generateShareIcon } from 'react-share'
+import { FormattedMessage } from 'react-intl'
 import { socialRow, flexRow, label, icon } from './styles.module.css'
 
-function getLabelByLanguage (language) {
-  switch (language) {
-    case 'en':
-      return 'Share:'
-    case 'es':
-      return 'Compartir:'
-    default:
-      return null
-  }
-}
-
-export default function BlogSocial ({language, url, title, summary}) {
+export default function BlogSocial ({url, title, summary}) {
   const {
     FacebookShareButton,
     TwitterShareButton,
@@ -35,7 +25,10 @@ export default function BlogSocial ({language, url, title, summary}) {
   return (
     <div className={socialRow}>
       <div>
-        <p className={label}>{getLabelByLanguage(language)}</p>
+        <p className={label}>
+          <FormattedMessage id='social.share'/>
+          {':'}
+        </p>
         <div className={flexRow}>
           <FacebookShareButton
             url={url}
@@ -68,7 +61,6 @@ export default function BlogSocial ({language, url, title, summary}) {
   )
 }
 BlogSocial.propTypes = {
-  language: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,

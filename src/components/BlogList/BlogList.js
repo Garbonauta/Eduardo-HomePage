@@ -3,32 +3,25 @@ import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { TagList } from 'components'
 import { getLocaleDateFromString, formatSlugForPostUrl } from 'utils/utils'
+import { FormattedMessage } from 'react-intl'
 import { blogEntry, blogTitle, blogSummary, blogFoot, supplementalInfo } from './styles.module.css'
-
-function getTagListSeparator (language) {
-  switch (language) {
-    case 'en':
-      return ' on '
-    case 'es':
-      return ' sobre '
-    default:
-      return ' '
-  }
-}
 
 function BlogListFooter ({language, author, tags, createdAt}) {
   return (
     <div className={blogFoot}>
       <div className={supplementalInfo}>
         {author}
-        {getTagListSeparator(language)}
+        {' '}
+        {<FormattedMessage id='on'/>}
+        {' '}
         <TagList language={language} tags={tags}/>
         {' | '}
-        {getLocaleDateFromString(language, createdAt)}
+        {getLocaleDateFromString(createdAt)}
       </div>
     </div>
   )
 }
+
 BlogListFooter.propTypes = {
   language: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,

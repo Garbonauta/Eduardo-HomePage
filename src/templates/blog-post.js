@@ -3,7 +3,9 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { BlogPost } from 'components'
 
-export default function blogPost ({data: {site, contentfulBlogPost}, pathContext: {langKey, locale, slug}}) {
+export default function blogPost (props) {
+  const {data: {site, contentfulBlogPost}, pathContext: {langKey, locale, slug}} = props
+  console.log(props)
   return (
     <div>
       <Helmet>

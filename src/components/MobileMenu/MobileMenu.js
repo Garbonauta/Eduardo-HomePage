@@ -1,18 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { SlideMenu, SlideMenuLink, SocialNav } from 'components'
+import { FormattedMessage } from 'react-intl'
 import { linkList, link } from './styles.module.css'
-
-function getSocialHeaderbyLang (language) {
-  switch (language) {
-    case 'en':
-      return 'Find me on:'
-    case 'es':
-      return 'Encuéntrame en:'
-    default:
-      return null
-  }
-}
 
 export default function MobileMenu ({language, me, navElements, modalClose, visible, closeMenuAction}) {
   return (
@@ -35,7 +25,10 @@ export default function MobileMenu ({language, me, navElements, modalClose, visi
         }
       </ul>
       <hr/>
-      <span>{getSocialHeaderbyLang(language)}</span>
+      <span>
+        <FormattedMessage id='mobileMenu.findMe'/>
+        {':'}
+      </span>
       <SocialNav me={me}/>
     </SlideMenu>
   )

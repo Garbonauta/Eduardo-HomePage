@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { App } from 'containers'
-import { getLangs, getUrlForLang } from 'ptz-i18n'
-import { removeNodeContentfulArray, getLanguageInformation } from 'utils/utils'
+import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n'
+import { IntlProvider } from 'react-intl'
+import 'intl'
+import { removeNodeContentfulArray } from 'utils/utils'
 
 class Layout extends React.Component {
   static propTypes = {
@@ -11,15 +13,17 @@ class Layout extends React.Component {
       site: PropTypes.object.isRequired,
       navigation: PropTypes.object.isRequired,
       person: PropTypes.object.isRequired,
-    }),
+    }).isRequired,
+    i18nMessages: PropTypes.object.isRequired,
   }
   state = {
-    ...getLanguageInformation(this.props.data.site.siteMetadata.languages),
+    langs: this.props.data.site.siteMetadata.languages.langs,
+    defaultLang: this.props.data.site.siteMetadata.languages.defaultLangKey,
   }
-  getLanguageData = () => {
-    const {langs, currentLang, url} = this.state
+  getLanguageData = (currentLang) => {
+    const {langs} = this.state
     const homeLink = `/${currentLang}/`
-    return getLangs(langs, currentLang, getUrlForLang(homeLink, url))
+    return getLangs(langs, currentLang, getUrlForLang(homeLink, location.pathname))
   }
   getNavigationElements = () => {
     const edges = this.props.data.navigation.edges
@@ -31,18 +35,23 @@ class Layout extends React.Component {
   }
 
   render () {
-    const langsMenu = this.getLanguageData()
     const navElements = this.getNavigationElements()
-    const {children, data: {person}} = this.props
+    const {children, data: {person}, i18nMessages} = this.props
+    const currentLang = getCurrentLangKey(this.state.langs, this.state.defaultLang, location.pathname)
+    const langsMenu = this.getLanguageData(currentLang)
 
     return (
-      <App
-        currentLanguage={this.state.currentLang}
-        languages={langsMenu}
-        me={person}
-        navElements={navElements}>
-        {children}
-      </App>
+      <IntlProvider
+        locale={currentLang}
+        messages={i18nMessages}>
+        <App
+          currentLanguage={currentLang}
+          languages={langsMenu}
+          me={person}
+          navElements={navElements}>
+          {children}
+        </App>
+      </IntlProvider>
     )
   }
 }
