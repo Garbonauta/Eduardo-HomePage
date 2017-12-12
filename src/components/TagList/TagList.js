@@ -1,17 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Tag from '../Tag/Tag'
-import { formatSlugForTagUrl } from '../../utils/utils'
+import Link from 'gatsby-link'
+import { formatSlugForTagUrl } from 'utils/utils'
+import { link } from './styles.module.css'
 
 export default function TagList ({language, tags}) {
+  const length = tags.length
   return (
-    <div>
+    <span>
       {
         tags.map(({id, slug, display}) => {
-          return <Tag key={id} name={display} to={formatSlugForTagUrl(language, slug)}/>
-        })
+          return (
+            <Link key={id} to={formatSlugForTagUrl(language, slug)} className={link}>
+              {display}
+            </Link>
+          )
+        }).reduce((accum, currLink, currIndex) => {
+          accum.push(currLink)
+          currIndex !== length - 1 && accum.push(', ')
+          return accum
+        }, [])
       }
-    </div>
+    </span>
   )
 }
 TagList.propTypes = {

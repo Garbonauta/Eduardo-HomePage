@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import BlogList from '../components/BlogList/BlogList'
-import { removeNodeContentfulArray } from '../utils/utils'
-import { pageContent } from '../sharedStyles/styles.module.css'
+import { BlogList } from 'components'
+import { removeNodeContentfulArray } from 'utils/utils'
+import { pageContent } from 'sharedStyles/styles.module.css'
 
 export default function IndexPage ({data: {site: {siteMetadata: {title: siteTitle}}, me, posts, home}}) {
   return (
@@ -11,7 +11,7 @@ export default function IndexPage ({data: {site: {siteMetadata: {title: siteTitl
       <Helmet>
         <title>{`Inicio | ${siteTitle}`}</title>
       </Helmet>
-      <BlogList language='es' posts={removeNodeContentfulArray(posts)}/>
+      <BlogList language='es' posts={removeNodeContentfulArray(posts.edges)}/>
     </div>
   )
 }
@@ -55,6 +55,11 @@ query HomeEsQuery($locale: String = "es", $me: String = "Eduardo Moreno") {
         }
         createdAt
         summary
+        tags {
+          id
+          slug
+          display
+        }
       }
     }
   }

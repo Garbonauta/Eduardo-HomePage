@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import TagPage from '../../components/TagPage/TagPage'
+import { TagPage } from 'components'
 
 export default function Tag ({data: {site: {siteMetadata: {title: siteTitle}}, contentfulTag}}) {
   return (
@@ -42,6 +42,11 @@ export const query = graphql`
         summary
         author {
           fullName
+        }
+        tags {
+          id
+          slug
+          display
         }
       }
     }

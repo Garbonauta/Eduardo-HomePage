@@ -1,11 +1,13 @@
 .blogEntry {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 
 .blogTitle {
   composes: header from '../../sharedStyles/styles.module.css';
   text-decoration: none;
-  margin: 0;
+  margin: 0.5rem 0;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .blogSummary {

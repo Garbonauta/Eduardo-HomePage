@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BlogList from '../components/BlogList/BlogList'
+import { BlogList } from 'components'
 import Helmet from 'react-helmet'
-import { removeNodeContentfulArray } from '../utils/utils'
-import { pageContent } from '../sharedStyles/styles.module.css'
+import { removeNodeContentfulArray } from 'utils/utils'
+import { pageContent } from 'sharedStyles/styles.module.css'
 
-export default function IndexPage ({data: {site: {siteMetadata: {title: siteTitle}}, me, posts, home}}) {
+export default function IndexPage ({data: {site: {siteMetadata: {title: siteTitle}}, me, posts, home}}, props) {
   return (
     <div className={pageContent}>
       <Helmet>
         <title>{`Home | ${siteTitle}`}</title>
       </Helmet>
-      <BlogList language='en' posts={removeNodeContentfulArray(posts)}/>
+      <BlogList language='en' posts={removeNodeContentfulArray(posts.edges)}/>
     </div>
   )
 }
@@ -33,6 +33,10 @@ query HomeEnQuery($locale: String = "en-US", $me: String = "Eduardo Moreno") {
   site {
     siteMetadata {
       title
+      languages {
+        defaultLangKey
+        langs
+      } 
     }
   }
   me: allContentfulPerson(filter: {fullName: {eq: $me}, node_locale: {eq: $locale}}) {
@@ -55,6 +59,11 @@ query HomeEnQuery($locale: String = "en-US", $me: String = "Eduardo Moreno") {
         }
         createdAt
         summary
+        tags {
+          id
+          slug
+          display
+        }
       }
     }
   }

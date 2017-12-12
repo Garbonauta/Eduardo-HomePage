@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import LanguagePicker from '../LanguagePicker/LanguagePicker'
+import { LanguagePicker } from 'components'
 import {
   footerElement, developed, copyright, link, jsLink,
   attributions, contentfulLogo, localeInfo,

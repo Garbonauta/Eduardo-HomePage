@@ -1,43 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import { getLocaleDateFromString } from '../../utils/utils'
+import { TagList } from 'components'
+import { getLocaleDateFromString, formatSlugForPostUrl } from 'utils/utils'
 import { blogEntry, blogTitle, blogSummary, blogFoot, supplementalInfo } from './styles.module.css'
 
-function formatDateString (locale, publishDate) {
-  const dateString = getLocaleDateFromString(locale, publishDate)
-  let joinVal
-  switch (locale) {
+function getTagListSeparator (language) {
+  switch (language) {
     case 'en':
-      joinVal = 'on'
-      break
+      return ' on '
     case 'es':
-      joinVal = 'el'
-      break
+      return ' sobre '
     default:
-      break
+      return ' '
   }
-  return ` ${joinVal} ${dateString}`
 }
 
-function formatSlugForLang (language, slug) {
-  return `${language}/post/${slug}`
-}
-
-function BlogListFooter ({language, author, createdAt}) {
+function BlogListFooter ({language, author, tags, createdAt}) {
   return (
     <div className={blogFoot}>
       <div className={supplementalInfo}>
-        <span>{author}</span>
-        <span>{formatDateString(language, createdAt)}</span>
+        {author}
+        {getTagListSeparator(language)}
+        <TagList language={language} tags={tags}/>
+        {' | '}
+        {getLocaleDateFromString(language, createdAt)}
       </div>
     </div>
   )
 }
-
 BlogListFooter.propTypes = {
   language: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
   createdAt: PropTypes.string.isRequired,
 }
 
@@ -52,16 +47,18 @@ export default function BlogList ({posts, language}) {
           createdAt,
           summary,
           author: {fullName},
+          tags,
         } = post
         return (
           <div key={id} className={blogEntry}>
-            <Link className={blogTitle} to={formatSlugForLang(language, slug)}>
-              <h2>{title}</h2>
+            <Link className={blogTitle} to={formatSlugForPostUrl(language, slug)}>
+              {title}
             </Link>
             <p className={blogSummary}>{summary}</p>
             <BlogListFooter
               language={language}
               author={fullName}
+              tags={tags}
               createdAt={createdAt}/>
           </div>
         )
@@ -80,5 +77,6 @@ BlogList.propTypes = {
     author: PropTypes.shape({
       fullName: PropTypes.string.isRequired,
     }).isRequired,
+    tags: PropTypes.array.isRequired,
   })),
 }

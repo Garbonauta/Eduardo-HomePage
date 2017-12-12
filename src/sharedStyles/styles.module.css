@@ -6,7 +6,7 @@ html, body {
 body {
   font-family: sans-serif;
   color: #5F5F5F;
-  background-color: #F9F9F9;
+  background-color: #F7F7F7;
 }
 
 html {
@@ -36,15 +36,14 @@ html {
 }
 
 .footerPadding {
-  height: 164px;
 }
 
 .pageContent {
   width: 100%;
   background: #FFFFFF;
   padding: 0 24px;
-  margin-bottom: 12px;
-  box-shadow: 0 3px 10px rgba(25, 17, 34, 0.05);
+  margin-bottom: calc(164px + 12px);
+  box-shadow: 0 3px 10px rgba(25, 17, 34, 0.05), 0 3px 14px rgba(25, 17, 34, 0.03);
 }
 
 .flexRow {
@@ -54,5 +53,6 @@ html {
 }
 
 .header {
+  display: block;
   color: #242424;
 }

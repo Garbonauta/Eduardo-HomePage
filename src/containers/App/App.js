@@ -1,20 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import TopNav from '../../components/TopNav/TopNav'
-import Footer from '../../components/Footer/Footer'
-import Overlay from '../../components/Overlay/Overlay'
-import MobileMenu from '../../components/MobileMenu/MobileMenu'
-import { mainContainer, contentContainer, pageContainer, footerPadding } from './styles.module.css'
+import { TopNav, Footer, Overlay, MobileMenu } from 'components'
 import 'prismjs-okaidia-theme/prism-okaidia.css'
+import { mainContainer, contentContainer, pageContainer } from './styles.module.css'
 
 const mql = window.matchMedia(`(min-width: 800px)`)
 
 class App extends React.Component {
   static propTypes = {
+    currentLanguage: PropTypes.string.isRequired,
     languages: PropTypes.array.isRequired,
     me: PropTypes.object.isRequired,
     navElements: PropTypes.array.isRequired,
-    socialHeader: PropTypes.string.isRequired,
     children: PropTypes.func.isRequired,
   }
   state = {
@@ -44,7 +41,7 @@ class App extends React.Component {
   }
 
   render () {
-    const {languages, me, socialHeader, navElements} = this.props
+    const { currentLanguage, languages, me, navElements } = this.props
     return (
       <div className={mainContainer}>
         <div className={contentContainer}>
@@ -55,13 +52,16 @@ class App extends React.Component {
           </header>
           <div className={pageContainer}>
             {this.props.children()}
-            <div className={footerPadding}/>
           </div>
           <Footer me={me} languages={languages}/>
         </div>
         <MobileMenu
-          me={me} navElements={navElements} socialHeader={socialHeader}
-          visible={this.state.menuVisible} modalClose={this.state.overflowClose} closeMenuAction={this.closeMobileMenu}/>
+          language={currentLanguage}
+          me={me}
+          navElements={navElements}
+          visible={this.state.menuVisible}
+          modalClose={this.state.overflowClose}
+          closeMenuAction={this.closeMobileMenu}/>
         <Overlay visible={this.state.menuVisible} onClick={this.closeMobileMenu}/>
       </div>
     )

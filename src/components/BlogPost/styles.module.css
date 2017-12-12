@@ -3,9 +3,13 @@
 }
 
 .blogInfoContainer {
+  padding: 1.5rem 0;
 }
 
-.flexRow {
-  composes: flexRow from '../../sharedStyles/styles.module.css';
-  justify-content: space-between;
+.tagRow {
+  font-size: 0.85rem;
+}
+
+hr {
+  margin: 0.75rem 0;
 }

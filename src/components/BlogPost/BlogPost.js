@@ -1,24 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import urlJoin from 'url-join'
-import BlogContent from '../BlogContent/BlogContent'
-import Comments from '../Comments/Comments'
-import BlogSocial from '../BlogSocial/BlogSocial'
-import TagList from '../TagList/TagList'
-import { getLocaleDateFromString } from '../../utils/utils'
-import { pageContent, blogInfoContainer, flexRow } from './styles.module.css'
+import { BlogContent, Comments, BlogSocial, TagList } from 'components'
+import { getLocaleDateFromString } from 'utils/utils'
+import { pageContent, blogInfoContainer, tagRow } from './styles.module.css'
+
+function getLanguageLabel (language) {
+  switch (language) {
+    case 'en':
+      return 'In this post: '
+    case 'es':
+      return 'En este post: '
+    default:
+      return null
+  }
+}
 
 function BlogInfoContainer ({language, blogUrl, blogTitle, blogSummary, tags}) {
   return (
     <div className={blogInfoContainer}>
+      <div className={tagRow}>
+        {getLanguageLabel(language)}
+        <TagList language={language} tags={tags}/>
+      </div>
+      <hr/>
       <BlogSocial
         language={language}
         url={blogUrl}
         title={blogTitle}
         summary={blogSummary} />
-      <div className={flexRow}>
-        <TagList language={language} tags={tags}/>
-      </div>
     </div>
   )
 }

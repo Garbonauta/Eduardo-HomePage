@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import BlogPost from '../../components/BlogPost/BlogPost'
+import { BlogPost } from 'components'
 
 export default function blogPost ({data: {site, contentfulBlogPost}}) {
   return (
