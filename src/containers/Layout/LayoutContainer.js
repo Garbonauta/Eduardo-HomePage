@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { App } from 'containers'
+import { Layout } from 'components'
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n'
 import { IntlProvider } from 'react-intl'
 import 'intl'
 import 'typeface-open-sans'
 import 'prismjs-okaidia-theme/prism-okaidia.css'
 
-class Layout extends React.Component {
+class LayoutContainer extends React.Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
     data: PropTypes.shape({
@@ -44,16 +44,16 @@ class Layout extends React.Component {
       <IntlProvider
         locale={currentLang}
         messages={i18nMessages}>
-        <App
+        <Layout
           currentLanguage={currentLang}
           languages={langsMenu}
           me={person}
           navElements={this.props.data.site.siteMetadata.menu}>
           {children}
-        </App>
+        </Layout>
       </IntlProvider>
     )
   }
 }
 
-export default Layout
+export default LayoutContainer

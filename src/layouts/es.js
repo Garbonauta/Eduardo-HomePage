@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Layout from 'layouts/Layout'
+import { LayoutContainer } from 'containers'
 import { addLocaleData } from 'react-intl'
 import messages from 'data/messages/es'
 import es from 'react-intl/locale-data/es'
@@ -10,11 +10,11 @@ addLocaleData(es)
 
 export default function IndexTemplate ({children, data}) {
   return (
-    <Layout
+    <LayoutContainer
       data={data}
       i18nMessages={messages}>
       {children}
-    </Layout>
+    </LayoutContainer>
   )
 }
 IndexTemplate.propTypes = {

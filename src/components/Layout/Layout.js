@@ -5,7 +5,7 @@ import { mainContainer, contentContainer, pageContainer } from './styles.module.
 
 const mql = window.matchMedia(`(min-width: 800px)`)
 
-class App extends React.Component {
+class Layout extends React.Component {
   static propTypes = {
     currentLanguage: PropTypes.string.isRequired,
     languages: PropTypes.array.isRequired,
@@ -38,7 +38,6 @@ class App extends React.Component {
       overflowClose: true,
     })
   }
-
   render () {
     const { currentLanguage, languages, me, navElements } = this.props
     return (
@@ -70,4 +69,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default Layout
