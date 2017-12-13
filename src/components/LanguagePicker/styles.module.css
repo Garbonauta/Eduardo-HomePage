@@ -1,12 +1,12 @@
 .container {
   display: flex;
   flex-direction: row;
-  padding: 5px 24px;
+  margin: 0 24px;
 }
 
 .flag {
   composes: link from '../../sharedStyles/styles.module.css';
-  padding-left: 12px;
+  padding: 4px 8px;
   font-size: 0.65rem;
   font-weight: bold;
 }

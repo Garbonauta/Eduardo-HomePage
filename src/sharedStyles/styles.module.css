@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe,
+html, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, img, ins, kbd, q, s, samp,
@@ -15,7 +15,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  outline: 0;
   color: #5F5F5F;
   background-color: #F7F7F7;
 }
@@ -41,7 +43,7 @@ html {
 }
 
 .footer {
-  max-height: 150px;
+  max-height: 136px;
 }
 
 .footerPadding {
@@ -51,7 +53,7 @@ html {
   width: 100%;
   background: #FFFFFF;
   padding: 0 24px;
-  margin-bottom: calc(150px + 12px);
+  margin-bottom: calc(136px + 12px);
   box-shadow: 0 3px 10px rgba(25, 17, 34, 0.05), 0 3px 14px rgba(25, 17, 34, 0.03);
 }
 

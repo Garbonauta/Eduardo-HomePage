@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import { TagList } from 'components'
+import { TagList, NoPost } from 'components'
 import { getLocaleDateFromString, formatSlugForPostUrl } from 'utils/utils'
 import { FormattedMessage } from 'react-intl'
 import { blogEntry, blogTitle, blogSummary, blogFoot, supplementalInfo } from './styles.module.css'
@@ -32,30 +32,32 @@ BlogListFooter.propTypes = {
 export default function BlogList ({posts, language}) {
   return (
     <div>
-      {posts.map(post => {
-        const {
-          id,
-          slug,
-          title,
-          createdAt,
-          summary,
-          author: {fullName},
-          tags,
-        } = post
-        return (
-          <div key={id} className={blogEntry}>
-            <Link className={blogTitle} to={formatSlugForPostUrl(language, slug)}>
-              {title}
-            </Link>
-            <p className={blogSummary}>{summary}</p>
-            <BlogListFooter
-              language={language}
-              author={fullName}
-              tags={tags}
-              createdAt={createdAt}/>
-          </div>
-        )
-      })}
+      {posts.length > 0
+        ? posts.map(post => {
+          const {
+            id,
+            slug,
+            title,
+            createdAt,
+            summary,
+            author: {fullName},
+            tags,
+          } = post
+          return (
+            <div key={id} className={blogEntry}>
+              <Link className={blogTitle} to={formatSlugForPostUrl(language, slug)}>
+                {title}
+              </Link>
+              <p className={blogSummary}>{summary}</p>
+              <BlogListFooter
+                language={language}
+                author={fullName}
+                tags={tags}
+                createdAt={createdAt}/>
+            </div>
+          )
+        })
+        : <NoPost/>}
     </div>
   )
 }

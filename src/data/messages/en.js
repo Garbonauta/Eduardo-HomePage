@@ -7,6 +7,7 @@ const messages = {
   'navigation.home': 'Home',
   'navigation.about': 'About Me',
   'post.tagLabel': 'In this post',
+  'posts.noPosts': 'It appears there are no posts here yet...',
   'social.share': 'Share',
 }
 export default messages

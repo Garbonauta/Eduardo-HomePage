@@ -1,11 +1,16 @@
+.socialList {
+  composes: linkList from '../../sharedStyles/styles.module.css';
+  composes: flexRow from '../../sharedStyles/styles.module.css';
+}
+
 .socialEntry {
-  display: inline-block;
+  display: flex;
   font-size: 2em;
   margin: 0 8px;
 }
 
-.socialList {
-  composes: linkList from '../../sharedStyles/styles.module.css';
+.socialIcon {
+  height: 100%;
 }
 
 .socialIcon:visited, .socialIcon:link {
