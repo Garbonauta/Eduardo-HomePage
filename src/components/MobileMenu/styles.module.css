@@ -4,7 +4,22 @@
   composes: linkList from '../../sharedStyles/styles.module.css';
 }
 
+.listItem {
+  min-height: 48px;
+  display: flex;
+
+}
+
 .link {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
   composes: link from '../../sharedStyles/styles.module.css';
-  padding: 0.4rem 0;
+}
+
+.findMe {
+  margin-bottom: 8px;
 }

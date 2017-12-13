@@ -4,14 +4,23 @@ import { App } from 'containers'
 import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n'
 import { IntlProvider } from 'react-intl'
 import 'intl'
-import { removeNodeContentfulArray } from 'utils/utils'
+import 'typeface-open-sans'
+import 'prismjs-okaidia-theme/prism-okaidia.css'
 
 class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
     data: PropTypes.shape({
-      site: PropTypes.object.isRequired,
-      navigation: PropTypes.object.isRequired,
+      site: PropTypes.shape({
+        siteMetadata: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          languages: PropTypes.shape({
+            defaultLangKey: PropTypes.string.isRequired,
+            langs: PropTypes.array.isRequired,
+          }).isRequired,
+          menu: PropTypes.arrayOf(PropTypes.object).isRequired,
+        }).isRequired,
+      }).isRequired,
       person: PropTypes.object.isRequired,
     }).isRequired,
     i18nMessages: PropTypes.object.isRequired,
@@ -25,17 +34,8 @@ class Layout extends React.Component {
     const homeLink = `/${currentLang}/`
     return getLangs(langs, currentLang, getUrlForLang(homeLink, location.pathname))
   }
-  getNavigationElements = () => {
-    const edges = this.props.data.navigation.edges
-
-    return removeNodeContentfulArray(edges)
-      .sort((a, b) => {
-        return a.order - b.order
-      })
-  }
 
   render () {
-    const navElements = this.getNavigationElements()
     const {children, data: {person}, i18nMessages} = this.props
     const currentLang = getCurrentLangKey(this.state.langs, this.state.defaultLang, location.pathname)
     const langsMenu = this.getLanguageData(currentLang)
@@ -48,7 +48,7 @@ class Layout extends React.Component {
           currentLanguage={currentLang}
           languages={langsMenu}
           me={person}
-          navElements={navElements}>
+          navElements={this.props.data.site.siteMetadata.menu}>
           {children}
         </App>
       </IntlProvider>

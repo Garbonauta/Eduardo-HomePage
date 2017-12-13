@@ -1,10 +1,21 @@
-html, body {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
+  border: 0;
+  outline: 0;
+  font-style: inherit;
+  font-family: inherit;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #5F5F5F;
   background-color: #F7F7F7;
 }
@@ -22,8 +33,6 @@ html {
 }
 
 .linkList {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
@@ -55,4 +64,11 @@ html {
 .header {
   display: block;
   color: #242424;
+}
+
+.centerFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }

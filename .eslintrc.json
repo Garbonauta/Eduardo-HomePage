@@ -18,7 +18,8 @@
     "standard"
   ],
   "plugins": [
-    "react"
+    "react",
+    "react-intl"
   ],
   "rules": {
     "no-console": [

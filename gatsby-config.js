@@ -1,13 +1,9 @@
 require('dotenv').config()
 const languages = require('./src/data/languages')
+const siteMetadata = require('./src/data/siteMetadata')
 
 module.exports = {
-  siteMetadata: {
-    title: `Eduardo Moreno`,
-    author: `Eduardo Moreno`,
-    siteUrl: `https://wwww.garbonauta.com`,
-    languages,
-  },
+  siteMetadata,
   plugins: [
     'gatsby-plugin-react-next',
     {

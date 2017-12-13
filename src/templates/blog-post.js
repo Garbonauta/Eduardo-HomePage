@@ -4,8 +4,7 @@ import Helmet from 'react-helmet'
 import { BlogPost } from 'components'
 
 export default function blogPost (props) {
-  const {data: {site, contentfulBlogPost}, pathContext: {langKey, locale, slug}} = props
-  console.log(props)
+  const {data: {site, contentfulBlogPost}, pathContext: {langKey}} = props
   return (
     <div>
       <Helmet>

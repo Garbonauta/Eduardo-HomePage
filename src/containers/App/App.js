@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { TopNav, Footer, Overlay, MobileMenu } from 'components'
-import 'prismjs-okaidia-theme/prism-okaidia.css'
 import { mainContainer, contentContainer, pageContainer } from './styles.module.css'
 
 const mql = window.matchMedia(`(min-width: 800px)`)
@@ -47,7 +46,10 @@ class App extends React.Component {
         <div className={contentContainer}>
           <header>
             <TopNav
-              me={me} navElements={navElements} onClick={this.openMobileMenu}
+              language={currentLanguage}
+              me={me}
+              navElements={navElements}
+              onClick={this.openMobileMenu}
               fullNav={this.state.fullNav}/>
           </header>
           <div className={pageContainer}>

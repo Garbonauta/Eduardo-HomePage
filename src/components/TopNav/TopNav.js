@@ -1,39 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
+import { FormattedMessage } from 'react-intl'
 import { SocialNav } from 'components'
 import MenuIcon from 'react-icons/lib/md/menu'
+import urlJoin from 'url-join'
 import {
   activeNavigation, link, navBar, navBarContent, navElement, navList,
-  navIcon, displayNone, displayBlock,
+  navIcon, socialNav, displayNone, display,
 } from './styles.module.css'
 
-export default function TopNav ({me, navElements, onClick, fullNav}) {
+export default function TopNav ({language, me, navElements, onClick, fullNav}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
-        <ul className={`${navList} ${fullNav ? displayBlock : displayNone}`}>
+        <ul className={`${navList} ${fullNav ? display : displayNone}`}>
           {
-            navElements.map(element => {
+            navElements.map((element, index) => {
               return (
-                <li key={element.title} className={navElement}>
+                <li key={`nt${index}`} className={navElement}>
                   <Link
                     exact={true}
                     activeClassName={activeNavigation}
                     className={link}
-                    to={element.slug}>
-                    {element.displayText}
+                    to={urlJoin(language, element.slug)}>
+                    <FormattedMessage id={element.label}/>
                   </Link>
                 </li>
               )
             })
           }
         </ul>
-        <div className={fullNav ? displayBlock : displayNone}>
+        <div className={`${socialNav} ${fullNav ? display : displayNone}`}>
           <SocialNav me={me}/>
         </div>
-        <div className={`${navIcon} ${fullNav ? displayNone : displayBlock}`} onClick={onClick}/>
-        <div className={`${navIcon} ${fullNav ? displayNone : displayBlock}`} onClick={onClick}>
+        <div className={fullNav ? displayNone : display}/>
+        <div className={`${navIcon} ${fullNav ? displayNone : display}`} onClick={onClick}>
           <MenuIcon/>
         </div>
       </div>
@@ -41,8 +43,12 @@ export default function TopNav ({me, navElements, onClick, fullNav}) {
   )
 }
 TopNav.propTypes = {
-  fullNav: PropTypes.bool.isRequired,
+  language: PropTypes.string.isRequired,
   me: PropTypes.object.isRequired,
-  navElements: PropTypes.array.isRequired,
+  navElements: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  })).isRequired,
   onClick: PropTypes.func.isRequired,
+  fullNav: PropTypes.bool.isRequired,
 }

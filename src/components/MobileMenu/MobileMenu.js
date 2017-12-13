@@ -2,22 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { SlideMenu, SlideMenuLink, SocialNav } from 'components'
 import { FormattedMessage } from 'react-intl'
-import { linkList, link } from './styles.module.css'
+import urlJoin from 'url-join'
+import { linkList, listItem, link, findMe } from './styles.module.css'
 
 export default function MobileMenu ({language, me, navElements, modalClose, visible, closeMenuAction}) {
   return (
     <SlideMenu visible={visible} modalClose={modalClose} closeMenuAction={closeMenuAction}>
       <ul className={linkList}>
         {
-          navElements.map(element => {
+          navElements.map((element, index) => {
             return (
-              <li key={element.title}>
+              <li key={`slm${index}`} className={listItem}>
                 <SlideMenuLink
                   exact={true}
                   className={link}
-                  to={element.slug}
+                  to={urlJoin(language, element.slug)}
                   onClick={closeMenuAction}>
-                  {element.displayText}
+                  <FormattedMessage id={element.label}/>
                 </SlideMenuLink>
               </li>
             )
@@ -25,7 +26,7 @@ export default function MobileMenu ({language, me, navElements, modalClose, visi
         }
       </ul>
       <hr/>
-      <span>
+      <span className={findMe}>
         <FormattedMessage id='mobileMenu.findMe'/>
         {':'}
       </span>

@@ -26,27 +26,21 @@ export const query = graphql`
 query AppEsQuery {
   site {
     siteMetadata {
+      title
       languages {
         defaultLangKey
         langs
-      }      
+      }
+      menu {
+        label
+        slug
+      }
     }
   }
   person: contentfulPerson(fullName: {eq: "Eduardo Moreno"}) {
     fullName
     github
     linkedIn
-  }
-  navigation: allContentfulNavigation(filter: {node_locale: {eq: "es"}}) {
-    edges {
-      node {
-        node_locale
-        title
-        slug
-        displayText
-        order
-      }
-    }
   }
 }
 `

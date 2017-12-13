@@ -7,6 +7,6 @@
 .flag {
   composes: link from '../../sharedStyles/styles.module.css';
   padding-left: 12px;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: bold;
 }
