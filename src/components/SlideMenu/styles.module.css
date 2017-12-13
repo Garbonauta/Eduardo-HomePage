@@ -45,8 +45,8 @@
 
 .closeSign {
   position: absolute;
-  right: 8px;
-  top: 8px;
-  font-size: 24px;
+  right: 24px;
+  top: 11px;
+  font-size: 2rem;
   cursor: pointer;
 }

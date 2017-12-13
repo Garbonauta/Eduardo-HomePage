@@ -11,14 +11,19 @@
   height: 100%;
   max-width: 1300px;
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   padding: 0 24px;
+}
+
+.bigNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .navList {
   display: flex;
-  list-style: none;
-  flex-direction: row;
 }
 
 .navElement {
@@ -36,14 +41,11 @@
 }
 
 .navIcon {
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
+  composes: centerFlex from '../../sharedStyles/styles.module.css';
   cursor: pointer;
   z-index: 1;
   font-size: 2rem;
   text-align: center;
-  padding: 0 8px;
 }
 
 .socialNav {
@@ -52,8 +54,4 @@
 
 .displayNone {
   display: none;
-}
-
-.display {
-  display: flex;
 }

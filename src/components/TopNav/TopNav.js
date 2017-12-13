@@ -6,36 +6,37 @@ import { SocialNav } from 'components'
 import MenuIcon from 'react-icons/lib/md/menu'
 import urlJoin from 'url-join'
 import {
-  activeNavigation, link, navBar, navBarContent, navElement, navList,
-  navIcon, socialNav, displayNone, display,
+  activeNavigation, link, navBar, navBarContent, bigNav, navElement, navList,
+  navIcon, socialNav, displayNone,
 } from './styles.module.css'
 
 export default function TopNav ({language, me, navElements, onClick, fullNav}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
-        <ul className={`${navList} ${fullNav ? display : displayNone}`}>
-          {
-            navElements.map((element, index) => {
-              return (
-                <li key={`nt${index}`} className={navElement}>
-                  <Link
-                    exact={true}
-                    activeClassName={activeNavigation}
-                    className={link}
-                    to={urlJoin(language, element.slug)}>
-                    <FormattedMessage id={element.label}/>
-                  </Link>
-                </li>
-              )
-            })
-          }
-        </ul>
-        <div className={`${socialNav} ${fullNav ? display : displayNone}`}>
-          <SocialNav me={me}/>
+        <div className={`${bigNav} ${!fullNav && displayNone}`}>
+          <ul className={navList}>
+            {
+              navElements.map((element, index) => {
+                return (
+                  <li key={`nt${index}`} className={navElement}>
+                    <Link
+                      exact={true}
+                      activeClassName={activeNavigation}
+                      className={link}
+                      to={urlJoin(language, element.slug)}>
+                      <FormattedMessage id={element.label}/>
+                    </Link>
+                  </li>
+                )
+              })
+            }
+          </ul>
+          <div className={socialNav}>
+            <SocialNav me={me}/>
+          </div>
         </div>
-        <div className={fullNav ? displayNone : display}/>
-        <div className={`${navIcon} ${fullNav ? displayNone : display}`} onClick={onClick}>
+        <div className={`${navIcon} ${fullNav && displayNone}`} onClick={onClick}>
           <MenuIcon/>
         </div>
       </div>

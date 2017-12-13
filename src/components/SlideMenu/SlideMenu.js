@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Close from 'react-icons/lib/fa/close'
+import Close from 'react-icons/lib/md/close'
 import { menu, slideIn, slideOut, menuContent, closeSign } from './styles.module.css'
 
 export default function SlideMenu ({visible, modalClose, closeMenuAction, children}) {
