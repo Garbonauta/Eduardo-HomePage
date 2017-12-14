@@ -7,7 +7,7 @@ import { linkList, listItem, link, findMe } from './styles.module.css'
 
 export default function MobileMenu ({language, me, navElements, modalClose, visible, closeMenuAction}) {
   return (
-    <SlideMenu visible={visible} modalClose={modalClose} closeMenuAction={closeMenuAction}>
+    <SlideMenu visible={visible} modalClose={modalClose}>
       <ul className={linkList}>
         {
           navElements.map((element, index) => {

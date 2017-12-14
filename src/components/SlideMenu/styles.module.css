@@ -40,13 +40,5 @@
 .menuContent {
   display: flex;
   flex-direction: column;
-  padding: 36px 24px;
-}
-
-.closeSign {
-  position: absolute;
-  right: 24px;
-  top: 11px;
-  font-size: 2rem;
-  cursor: pointer;
+  padding: 55px 24px;
 }

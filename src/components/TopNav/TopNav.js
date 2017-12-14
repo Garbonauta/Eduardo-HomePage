@@ -2,15 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
 import { FormattedMessage } from 'react-intl'
-import { SocialNav } from 'components'
-import MenuIcon from 'react-icons/lib/md/menu'
+import { SocialNav, NavIcon } from 'components'
 import urlJoin from 'url-join'
 import {
   activeNavigation, link, navBar, navBarContent, bigNav, navElement, navList,
-  navIcon, socialNav, displayNone,
+  navIcon, socialNav, displayNone, iconShow,
 } from './styles.module.css'
 
-export default function TopNav ({language, me, navElements, onClick, fullNav}) {
+export default function TopNav ({language, me, navElements, onClick, fullNav, mobileVisible}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
@@ -36,8 +35,8 @@ export default function TopNav ({language, me, navElements, onClick, fullNav}) {
             <SocialNav me={me}/>
           </div>
         </div>
-        <div className={`${navIcon} ${fullNav && displayNone}`} onClick={onClick}>
-          <MenuIcon/>
+        <div className={`${navIcon} ${fullNav && displayNone}  ${mobileVisible && iconShow}`} onClick={onClick}>
+          <NavIcon navMenuOpen={mobileVisible} />
         </div>
       </div>
     </nav>
@@ -52,4 +51,5 @@ TopNav.propTypes = {
   })).isRequired,
   onClick: PropTypes.func.isRequired,
   fullNav: PropTypes.bool.isRequired,
+  mobileVisible: PropTypes.bool.isRequired,
 }

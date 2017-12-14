@@ -11,7 +11,7 @@
   height: 100%;
   max-width: 1300px;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
   padding: 0 24px;
 }
 
@@ -43,13 +43,16 @@
 .navIcon {
   composes: centerFlex from '../../sharedStyles/styles.module.css';
   cursor: pointer;
-  z-index: 1;
+  z-index: 4;
   font-size: 2rem;
   text-align: center;
 }
 
 .socialNav {
   composes: centerFlex from '../../sharedStyles/styles.module.css';
+}
+
+.iconShow {
 }
 
 .displayNone {

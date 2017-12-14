@@ -48,8 +48,9 @@ class Layout extends React.Component {
               language={currentLanguage}
               me={me}
               navElements={navElements}
-              onClick={this.openMobileMenu}
-              fullNav={this.state.fullNav}/>
+              onClick={this.state.menuVisible ? this.closeMobileMenu : this.openMobileMenu}
+              fullNav={this.state.fullNav}
+              mobileVisible={this.state.menuVisible}/>
           </header>
           <div className={pageContainer}>
             {this.props.children()}
