@@ -1,5 +1,5 @@
 import React from 'react'
-import { getUserLangKey } from 'ptz-i18n'
+import { getUserLanguage } from 'utils/utils'
 import { navigateTo } from 'gatsby-link'
 
 class RedirectIndex extends React.PureComponent {
@@ -8,7 +8,7 @@ class RedirectIndex extends React.PureComponent {
 
     if (typeof window !== 'undefined') {
       const {langs, defaultLangKey} = args.data.site.siteMetadata.languages
-      const langKey = getUserLangKey(langs, defaultLangKey)
+      const langKey = getUserLanguage(langs, defaultLangKey)
       const homeUrl = `/${langKey}/`
 
       navigateTo(homeUrl)

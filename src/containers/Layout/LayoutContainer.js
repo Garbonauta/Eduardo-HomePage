@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Layout } from 'components'
-import { getCurrentLangKey, getLangs, getUrlForLang } from 'ptz-i18n'
+import { getCurrentLanguage, getFormattedLangList } from 'utils/utils'
 import { IntlProvider } from 'react-intl'
 import 'intl'
 import 'typeface-open-sans'
@@ -31,13 +31,12 @@ class LayoutContainer extends React.Component {
   }
   getLanguageData = (currentLang) => {
     const {langs} = this.state
-    const homeLink = `/${currentLang}/`
-    return getLangs(langs, currentLang, getUrlForLang(homeLink, location.pathname))
+    return getFormattedLangList(langs, currentLang)
   }
 
   render () {
     const {children, data: {person}, i18nMessages} = this.props
-    const currentLang = getCurrentLangKey(this.state.langs, this.state.defaultLang, location.pathname)
+    const currentLang = getCurrentLanguage(this.state.langs, this.state.defaultLang, location.pathname)
     const langsMenu = this.getLanguageData(currentLang)
 
     return (
