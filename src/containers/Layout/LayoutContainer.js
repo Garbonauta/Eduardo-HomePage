@@ -24,6 +24,9 @@ class LayoutContainer extends React.Component {
       person: PropTypes.object.isRequired,
     }).isRequired,
     i18nMessages: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
   }
   state = {
     langs: this.props.data.site.siteMetadata.languages.langs,
@@ -35,7 +38,21 @@ class LayoutContainer extends React.Component {
   }
 
   render () {
-    const {children, data: {person}, i18nMessages} = this.props
+    const {
+      children,
+      data: {
+        person,
+        site: {
+          siteMetadata: {
+            menu,
+          },
+        },
+      },
+      i18nMessages,
+      history,
+      location: browserLocation,
+      match,
+    } = this.props
     const currentLang = getCurrentLanguage(this.state.langs, this.state.defaultLang, location.pathname)
     const langsMenu = this.getLanguageData(currentLang)
 
@@ -47,7 +64,10 @@ class LayoutContainer extends React.Component {
           currentLanguage={currentLang}
           languages={langsMenu}
           me={person}
-          navElements={this.props.data.site.siteMetadata.menu}>
+          navElements={menu}
+          history={history}
+          location={browserLocation}
+          match={match}>
           {children}
         </Layout>
       </IntlProvider>

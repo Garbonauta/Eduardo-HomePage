@@ -8,13 +8,11 @@ import 'intl/locale-data/jsonp/en'
 
 addLocaleData(en)
 
-export default function IndexTemplate ({children, data}) {
+export default function IndexTemplate (props) {
   return (
     <LayoutContainer
-      data={data}
-      i18nMessages={messages}>
-      {children}
-    </LayoutContainer>
+      {...props}
+      i18nMessages={messages} />
   )
 }
 IndexTemplate.propTypes = {

@@ -73,5 +73,5 @@ BlogList.propTypes = {
       fullName: PropTypes.string.isRequired,
     }).isRequired,
     tags: PropTypes.array.isRequired,
-  })),
+  })).isRequired,
 }

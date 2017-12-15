@@ -12,6 +12,9 @@ class Layout extends React.Component {
     me: PropTypes.object.isRequired,
     navElements: PropTypes.array.isRequired,
     children: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired,
   }
   state = {
     mql: mql,
@@ -38,8 +41,10 @@ class Layout extends React.Component {
       overflowClose: true,
     })
   }
+
   render () {
-    const { currentLanguage, languages, me, navElements } = this.props
+    const {currentLanguage, languages, me, navElements, history, location, match} = this.props
+    const fnSetSlugCurrentPage = this.setSlugCurrentPage
     return (
       <div className={mainContainer}>
         <div className={contentContainer}>
@@ -53,7 +58,12 @@ class Layout extends React.Component {
               mobileVisible={this.state.menuVisible}/>
           </header>
           <div className={pageContainer}>
-            {this.props.children()}
+            {this.props.children({
+              history,
+              location,
+              match,
+              setSlugCurrentPage: fnSetSlugCurrentPage,
+            })}
           </div>
           <Footer me={me} languages={languages}/>
         </div>
