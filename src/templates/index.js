@@ -2,16 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { IndexPage } from 'components'
+import { getCurrentLanguage } from 'utils/utils'
 import { pageContent } from 'sharedStyles/styles.module.css'
 
-export default function index ({data}) {
-  const {site: {siteMetadata: {title: siteTitle}}} = data
+export default function index (props) {
+  const {data, pathContext} = props
+  const {site: {siteMetadata: {title: siteTitle, languages: {langs, defaultLangKey}}}} = data
+  const langKey = getCurrentLanguage(langs, defaultLangKey, location.pathname)
   return (
     <div className={pageContent}>
       <Helmet>
-        <title>{`Inicio | ${siteTitle}`}</title>
+        <title>{`Home | ${siteTitle}`}</title>
       </Helmet>
-      <IndexPage language='es' data={data}/>
+      <IndexPage language={langKey} data={data} context={pathContext}/>
     </div>
   )
 }
@@ -23,16 +26,22 @@ index.propTypes = {
       }),
     }).isRequired,
     me: PropTypes.object.isRequired,
-    posts: PropTypes.object.isRequired,
     home: PropTypes.object.isRequired,
   }),
+  pathContext: PropTypes.shape({
+    group: PropTypes.array.isRequired,
+  }).isRequired,
 }
 
 export const query = graphql`
-query HomeEsQuery($locale: String = "es", $me: String = "Eduardo Moreno") {
+query HomeEnQuery($locale: String = "en-US", $me: String = "Eduardo Moreno") {
   site {
     siteMetadata {
       title
+      languages {
+        defaultLangKey
+        langs
+      } 
     }
   }
   me: allContentfulPerson(filter: {fullName: {eq: $me}, node_locale: {eq: $locale}}) {
@@ -40,26 +49,6 @@ query HomeEsQuery($locale: String = "es", $me: String = "Eduardo Moreno") {
       node {
         fullName
         jobTitle
-      }
-    }
-  }
-  posts: allContentfulBlogPost(filter: {node_locale: {eq: $locale}},
-  sort: {fields: [createdAt], order: DESC}) {
-    edges {
-      node {
-        id
-        slug
-        title
-        author {
-          fullName
-        }
-        createdAt
-        summary
-        tags {
-          id
-          slug
-          display
-        }
       }
     }
   }

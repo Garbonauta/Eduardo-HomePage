@@ -1,0 +1,44 @@
+.list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.listElement {
+  height: 30px;
+  text-align: center;
+  margin: 0 3px;
+}
+
+.link {
+  composes: link from '../../sharedStyles/styles.module.css';
+  composes: centerFlex from '../../sharedStyles/styles.module.css';
+  border-radius: 2px;
+  padding: 0 10px;
+  font-size: 1rem;
+  height: 30px;
+}
+
+.chevron {
+  composes: link from '../../sharedStyles/styles.module.css';
+  composes: centerFlex from '../../sharedStyles/styles.module.css';
+  padding: 0 4px;
+  font-size: 1.4rem;
+  height: 30px;
+}
+
+.disabled {
+  color: #9f9f9f;
+}
+
+.disabled:hover {
+  color: #9f9f9f;
+  opacity: unset;
+}
+
+.active {
+  background-color: #5F5F5F;
+  color: white !important;
+}

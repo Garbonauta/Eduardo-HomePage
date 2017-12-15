@@ -83,3 +83,8 @@ export function getFormattedLangList (langs, currentLang) {
     }
   })
 }
+
+export function getBasePath (path) {
+  const lastBaseInd = path.lastIndexOf('/')
+  return lastBaseInd > 1 ? path.substring(0, lastBaseInd) : path
+}

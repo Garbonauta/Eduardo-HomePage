@@ -1,4 +1,5 @@
 const path = require(`path`)
+const createPaginatedPages = require('gatsby-paginate')
 
 function getLanguageFromLocale (locale) {
   switch (locale) {
@@ -11,7 +12,7 @@ function getLanguageFromLocale (locale) {
   }
 }
 
-exports.modifyWebpackConfig = ({ config, stage }) => {
+exports.modifyWebpackConfig = ({config, stage}) => {
   config.merge(function (current) {
     current.resolve.root = path.resolve('./src')
     return current
@@ -24,11 +25,23 @@ exports.createPages = ({graphql, boundActionCreators}) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
-        allContentfulBlogPost {
+        allContentfulBlogPost(sort: {fields: [createdAt], order: DESC}) {
           edges {
             node {
+              id
               slug
               node_locale
+              title,
+              createdAt,
+              summary,
+              author {
+                fullName
+              }
+              tags {
+                id
+                slug
+                 display
+              }
             }
           }
         }
@@ -39,10 +52,19 @@ exports.createPages = ({graphql, boundActionCreators}) => {
       }
       result.data.allContentfulBlogPost.edges.map(({node}) => {
         const lang = getLanguageFromLocale(node.node_locale)
+        const edges = result.data.allContentfulBlogPost.edges
+          .filter(({node: {node_locale: nodeLocale}}) => {
+            return nodeLocale === node.node_locale
+          })
+        createPaginatedPages({
+          edges,
+          createPage: createPage,
+          pageTemplate: `src/templates/index.js`,
+          pathPrefix: lang,
+        })
         createPage({
           path: `${lang}/post/${node.slug}`,
           component: path.resolve(`./src/templates/blog-post.js`),
-          layout: lang,
           context: {
             slug: node.slug,
             langKey: lang,
@@ -73,7 +95,6 @@ exports.createPages = ({graphql, boundActionCreators}) => {
             createPage({
               path: `${lang}/tag/${node.slug}`,
               component: path.resolve(`./src/templates/tag.js`),
-              layout: lang,
               context: {
                 slug: node.slug,
                 langKey: lang,
