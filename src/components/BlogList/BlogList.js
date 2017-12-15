@@ -4,7 +4,6 @@ import Link from 'gatsby-link'
 import { TagList, NoPost } from 'components'
 import { getLocaleDateFromString, formatSlugForPostUrl } from 'utils/utils'
 import { FormattedMessage } from 'react-intl'
-import Observer from 'react-intersection-observer'
 import { blogEntry, blogTitle, blogSummary, blogFoot, supplementalInfo } from './styles.module.css'
 
 function BlogListFooter ({language, author, tags, createdAt}) {
