@@ -44,7 +44,6 @@ class Layout extends React.Component {
 
   render () {
     const {currentLanguage, languages, me, navElements, history, location, match} = this.props
-    const fnSetSlugCurrentPage = this.setSlugCurrentPage
     return (
       <div className={mainContainer}>
         <div className={contentContainer}>
@@ -62,7 +61,6 @@ class Layout extends React.Component {
               history,
               location,
               match,
-              setSlugCurrentPage: fnSetSlugCurrentPage,
             })}
           </div>
           <Footer me={me} languages={languages}/>
