@@ -8,7 +8,7 @@ import { pageContent } from 'sharedStyles/styles.module.css'
 export default function index (props) {
   const {data, pathContext} = props
   const {site: {siteMetadata: {title: siteTitle, languages: {langs, defaultLangKey}}}} = data
-  const pathname = location.pathname || ''
+  const pathname = typeof location === 'object' && location.pathname
   const langKey = getCurrentLanguage(langs, defaultLangKey, pathname)
   return (
     <div className={pageContent}>

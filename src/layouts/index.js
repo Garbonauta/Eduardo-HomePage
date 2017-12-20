@@ -19,7 +19,7 @@ class RedirectIndex extends React.Component {
   }
   render () {
     const {langs, defaultLangKey} = this.props.data.site.siteMetadata.languages
-    const pathname = location.pathname || ''
+    const pathname = typeof location === 'object' && location.pathname
     const langKey = getCurrentLanguage(langs, defaultLangKey, pathname)
     return (
       <div>

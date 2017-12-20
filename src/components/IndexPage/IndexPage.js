@@ -9,7 +9,7 @@ export default function IndexPage (
     data: {site, me, home},
     context: {group: posts, index, first, last, pageCount},
   }) {
-  const pathname = location.pathname || ''
+  const pathname = typeof location === 'object' && location.pathname
   return (
     <div>
       <BlogList language={language} posts={removeNodeContentfulArray(posts)}/>

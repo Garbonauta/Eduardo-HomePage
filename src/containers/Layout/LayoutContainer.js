@@ -53,7 +53,7 @@ class LayoutContainer extends React.Component {
       location: browserLocation,
       match,
     } = this.props
-    const pathname = location.pathname || ''
+    const pathname = typeof location === 'object' && location.pathname
     const currentLang = getCurrentLanguage(this.state.langs, this.state.defaultLang, pathname)
     const langsMenu = this.getLanguageData(currentLang)
 
