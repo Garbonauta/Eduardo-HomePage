@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { TopNav, Footer, Overlay, MobileMenu } from 'components'
 import { mainContainer, contentContainer, pageContainer } from './styles.module.css'
 
-const mql = window.matchMedia(`(min-width: 800px)`)
+const mql = typeof window === 'object' && window.matchMedia(`(min-width: 800px)`)
 
 class Layout extends React.Component {
   static propTypes = {

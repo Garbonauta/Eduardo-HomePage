@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "author": "Eduardo Moreno <eduardo.moreno.j@gmail.com>",
   "dependencies": {
-    "gatsby": "^1.9.136",
+    "gatsby": "^1.9.144",
+    "gatsby-cli": "^1.1.28",
     "gatsby-link": "^1.6.32",
     "gatsby-paginate": "^1.0.9",
     "gatsby-plugin-i18n": "^0.4.1",
@@ -25,6 +26,7 @@
     "react-intersection-observer": "^2.1.2",
     "react-intl": "^2.4.0",
     "react-share": "^1.18.0",
+    "save": "^2.3.2",
     "typeface-open-sans": "0.0.45",
     "url-join": "^2.0.2"
   },
@@ -41,7 +43,7 @@
     "fix": "eslint --fix src./*"
   },
   "devDependencies": {
-    "@types/react": "^16.0.30",
+    "@types/react": "^16.0.31",
     "babel-eslint": "^8.0.3",
     "dotenv": "^4.0.0",
     "eslint": "^4.13.1",
