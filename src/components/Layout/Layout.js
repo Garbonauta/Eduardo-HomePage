@@ -15,23 +15,8 @@ class Layout extends React.Component {
     match: PropTypes.object.isRequired,
   }
   state = {
-    mql: null,
     menuVisible: false,
     overflowClose: false,
-  }
-  componentWillMount = () => {
-    if (typeof window !== 'undefined') {
-      const mql = window.matchMedia(`(min-width: 800px)`)
-      mql && mql.addListener(this.mediaQueryChanged)
-      this.setState({mql: mql, fullNav: mql.matches})
-    }
-  }
-  componentWillUnmount = () => {
-    this.state.mql && this.state.mql.removeListener(this.mediaQueryChanged)
-  }
-  mediaQueryChanged = () => {
-    this.setState({fullNav: this.state.mql.matches})
-    this.state.fullNav && this.state.menuVisible && this.setState({menuVisible: false})
   }
   openMobileMenu = () => {
     this.setState({menuVisible: true})
@@ -54,7 +39,7 @@ class Layout extends React.Component {
               me={me}
               navElements={navElements}
               onClick={this.state.menuVisible ? this.closeMobileMenu : this.openMobileMenu}
-              fullNav={this.state.fullNav}
+              fullNav={true}
               mobileVisible={this.state.menuVisible}/>
           </header>
           <div className={pageContainer}>

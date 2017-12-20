@@ -22,6 +22,12 @@
   width: 100%;
 }
 
+@media (max-width: 800px) {
+  .bigNav {
+    display: none;
+  }
+}
+
 .navList {
   display: flex;
 }
@@ -48,13 +54,15 @@
   text-align: center;
 }
 
+@media (min-width: 800px) {
+  .navIcon {
+    display: none;
+  }
+}
+
 .socialNav {
   composes: centerFlex from '../../sharedStyles/styles.module.css';
 }
 
 .iconShow {
-}
-
-.displayNone {
-  display: none;
 }

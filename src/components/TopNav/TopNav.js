@@ -6,14 +6,14 @@ import { SocialNav, NavIcon } from 'components'
 import urlJoin from 'url-join'
 import {
   activeNavigation, link, navBar, navBarContent, bigNav, navElement, navList,
-  navIcon, socialNav, displayNone, iconShow,
+  navIcon, socialNav, iconShow,
 } from './styles.module.css'
 
-export default function TopNav ({language, me, navElements, onClick, fullNav, mobileVisible}) {
+export default function TopNav ({language, me, navElements, onClick, mobileVisible}) {
   return (
     <nav className={navBar}>
       <div className={navBarContent}>
-        <div className={`${bigNav} ${!fullNav && displayNone}`}>
+        <div className={bigNav}>
           <ul className={navList}>
             {
               navElements.map((element, index) => {
@@ -35,7 +35,7 @@ export default function TopNav ({language, me, navElements, onClick, fullNav, mo
             <SocialNav me={me}/>
           </div>
         </div>
-        <div className={`${navIcon} ${fullNav && displayNone}  ${mobileVisible && iconShow}`} onClick={onClick}>
+        <div className={`${navIcon} ${mobileVisible && iconShow}`} onClick={onClick}>
           <NavIcon navMenuOpen={mobileVisible} />
         </div>
       </div>
@@ -50,6 +50,5 @@ TopNav.propTypes = {
     slug: PropTypes.string.isRequired,
   })).isRequired,
   onClick: PropTypes.func.isRequired,
-  fullNav: PropTypes.bool.isRequired,
   mobileVisible: PropTypes.bool.isRequired,
 }
