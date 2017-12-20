@@ -6,7 +6,7 @@ import { getCurrentLanguage } from 'utils/utils'
 import { pageContent } from 'sharedStyles/styles.module.css'
 
 export default function index (props) {
-  const {data, pathContext} = props
+  const {data, pathContext, location} = props
   const {site: {siteMetadata: {title: siteTitle, languages: {langs, defaultLangKey}}}} = data
   const pathname = typeof location === 'object' && location.pathname
   const langKey = getCurrentLanguage(langs, defaultLangKey, pathname)
@@ -15,7 +15,7 @@ export default function index (props) {
       <Helmet>
         <title>{`Home | ${siteTitle}`}</title>
       </Helmet>
-      <IndexPage language={langKey} data={data} context={pathContext}/>
+      <IndexPage language={langKey} data={data} context={pathContext} location={location}/>
     </div>
   )
 }
@@ -32,6 +32,7 @@ index.propTypes = {
   pathContext: PropTypes.shape({
     group: PropTypes.array.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export const query = graphql`

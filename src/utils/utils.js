@@ -72,9 +72,7 @@ export function getCurrentLanguage (langs, defaultLangKey, url) {
   return getValidLanguage(langs, defaultLangKey, langKey)
 }
 
-export function getFormattedLangList (langs, currentLang) {
-  const currLocation = typeof location === 'object' && location.pathname
-
+export function getFormattedLangList (langs, currentLang, currLocation) {
   return langs.map(langKey => {
     return {
       langKey,

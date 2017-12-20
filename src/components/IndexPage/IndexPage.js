@@ -8,8 +8,8 @@ export default function IndexPage (
     language,
     data: {site, me, home},
     context: {group: posts, index, first, last, pageCount},
+    location: {pathname},
   }) {
-  const pathname = typeof location === 'object' && location.pathname
   return (
     <div>
       <BlogList language={language} posts={removeNodeContentfulArray(posts)}/>
@@ -36,5 +36,8 @@ IndexPage.propTypes = {
     first: PropTypes.bool.isRequired,
     last: PropTypes.bool.isRequired,
     pageCount: PropTypes.number.isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
 }

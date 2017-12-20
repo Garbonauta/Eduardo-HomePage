@@ -16,11 +16,13 @@ class RedirectIndex extends React.Component {
         }).isRequired,
       }).isRequired,
     }).isRequired,
+    location: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+    }),
   }
   render () {
     const {langs, defaultLangKey} = this.props.data.site.siteMetadata.languages
-    const pathname = typeof location === 'object' && location.pathname
-    const langKey = getCurrentLanguage(langs, defaultLangKey, pathname)
+    const langKey = getCurrentLanguage(langs, defaultLangKey, this.props.location.pathname)
     return (
       <div>
         {langKey === 'es' && <IndexEsTemplate {...this.props}/>}
