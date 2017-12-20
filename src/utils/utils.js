@@ -58,7 +58,7 @@ function getValidLanguage (langs, defaultLangKey, langToValidate) {
 function getUrlForLang (currentLang, currLocation, targetLang) {
   const homeLink = `/${currentLang}/`
   return currLocation === '/' || !currLocation.toString().startsWith(homeLink)
-    ? homeLink
+    ? `/${targetLang}/`
     : currLocation.replace(homeLink, `/${targetLang}/`)
 }
 

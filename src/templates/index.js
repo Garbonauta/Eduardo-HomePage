@@ -15,7 +15,11 @@ export default function index (props) {
       <Helmet>
         <title>{`Home | ${siteTitle}`}</title>
       </Helmet>
-      <IndexPage language={langKey} data={data} context={pathContext} location={location}/>
+      <IndexPage
+        language={langKey}
+        data={data}
+        context={pathContext}
+        location={location}/>
     </div>
   )
 }
