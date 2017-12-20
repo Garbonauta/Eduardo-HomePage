@@ -22,11 +22,11 @@ class Layout extends React.Component {
     overflowClose: false,
   }
   componentWillMount = () => {
-    mql.addListener(this.mediaQueryChanged)
+    mql && mql.addListener(this.mediaQueryChanged)
     this.setState({mql: mql, fullNav: mql.matches})
   }
   componentWillUnmount = () => {
-    this.state.mql.removeListener(this.mediaQueryChanged)
+    this.state.mql && this.state.mql.removeListener(this.mediaQueryChanged)
   }
   mediaQueryChanged = () => {
     this.setState({fullNav: this.state.mql.matches})
