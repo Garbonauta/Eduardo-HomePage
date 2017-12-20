@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { TopNav, Footer, Overlay, MobileMenu } from 'components'
 import { mainContainer, contentContainer, pageContainer } from './styles.module.css'
 
-const mql = typeof window === 'object' && window.matchMedia(`(min-width: 800px)`)
-
 class Layout extends React.Component {
   static propTypes = {
     currentLanguage: PropTypes.string.isRequired,
@@ -17,13 +15,16 @@ class Layout extends React.Component {
     match: PropTypes.object.isRequired,
   }
   state = {
-    mql: mql,
+    mql: null,
     menuVisible: false,
     overflowClose: false,
   }
   componentWillMount = () => {
-    mql && mql.addListener(this.mediaQueryChanged)
-    this.setState({mql: mql, fullNav: mql.matches})
+    if (typeof window !== 'undefined') {
+      const mql = window.matchMedia(`(min-width: 800px)`)
+      mql && mql.addListener(this.mediaQueryChanged)
+      this.setState({mql: mql, fullNav: mql.matches})
+    }
   }
   componentWillUnmount = () => {
     this.state.mql && this.state.mql.removeListener(this.mediaQueryChanged)
