@@ -67,8 +67,8 @@ export function getUserLanguage (langs, defaultLangKey) {
   return getValidLanguage(langs, defaultLangKey, browserLocale)
 }
 
-export function getCurrentLanguage (langs, defaultLangKey, urlString) {
-  const langKey = urlString.split('/')[1]
+export function getCurrentLanguage (langs, defaultLangKey, url) {
+  const langKey = url.toString().split('/')[1]
   return getValidLanguage(langs, defaultLangKey, langKey)
 }
 
