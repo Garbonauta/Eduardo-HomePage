@@ -49,7 +49,7 @@ function getBrowserLocale () {
 }
 
 function getValidLanguage (langs, defaultLangKey, langToValidate) {
-  const browserLanguage = langToValidate ? langToValidate.split('-')[0] : defaultLangKey
+  const browserLanguage = langToValidate ? langToValidate.toString().split('-')[0] : defaultLangKey
   const ocurrence = langs.indexOf(browserLanguage)
 
   return ocurrence > -1 ? langs[ocurrence] : defaultLangKey
@@ -57,7 +57,7 @@ function getValidLanguage (langs, defaultLangKey, langToValidate) {
 
 function getUrlForLang (currentLang, currLocation, targetLang) {
   const homeLink = `/${currentLang}/`
-  return currLocation === '/' || !currLocation.startsWith(homeLink)
+  return currLocation === '/' || !currLocation.toString().startsWith(homeLink)
     ? homeLink
     : currLocation.replace(homeLink, `/${targetLang}/`)
 }
