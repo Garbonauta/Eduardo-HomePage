@@ -9,6 +9,7 @@ export default function IndexPage (
     data: {site, me, home},
     context: {group: posts, index, first, last, pageCount},
   }) {
+  const pathname = location.pathname || ''
   return (
     <div>
       <BlogList language={language} posts={removeNodeContentfulArray(posts)}/>
@@ -18,7 +19,7 @@ export default function IndexPage (
         first={first}
         last={last}
         pageCount={pageCount}
-        baseUrl={getBasePath(location.pathname)}/>}
+        baseUrl={getBasePath(pathname)}/>}
     </div>
   )
 }

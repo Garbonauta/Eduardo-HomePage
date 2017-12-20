@@ -73,7 +73,7 @@ export function getCurrentLanguage (langs, defaultLangKey, url) {
 }
 
 export function getFormattedLangList (langs, currentLang) {
-  const currLocation = location.pathname
+  const currLocation = location.pathname || ''
 
   return langs.map(langKey => {
     return {
