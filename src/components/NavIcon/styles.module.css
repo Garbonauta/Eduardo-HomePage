@@ -1,7 +1,5 @@
 .icon {
-  position: relative;
-  justify-content: center;
-  width: 26px;
+  transform: translateY(-50%);
 }
 
 .icon span, .icon span:before, .icon span:after {
@@ -22,6 +20,11 @@
 }
 .icon span:after {
   top: 8px;
+}
+
+.icon.active {
+  position: fixed;
+  transform: translate(-50%, -50%);
 }
 
 .icon.active span {

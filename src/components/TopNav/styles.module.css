@@ -48,9 +48,10 @@
 
 .navIcon {
   composes: centerFlex from '../../sharedStyles/styles.module.css';
+  position: relative;
+  width: 26px;
   cursor: pointer;
   z-index: 3;
-  padding: 0 5px;
   text-align: center;
 }
 
