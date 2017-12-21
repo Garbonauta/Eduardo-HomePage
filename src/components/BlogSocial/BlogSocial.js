@@ -10,12 +10,14 @@ export default function BlogSocial ({url, title, summary}) {
     TwitterShareButton,
     RedditShareButton,
     LinkedinShareButton,
+    WhatsappShareButton,
   } = ShareButtons
 
   const FacebookIcon = generateShareIcon('facebook')
   const TwitterIcon = generateShareIcon('twitter')
   const RedditIcon = generateShareIcon('reddit')
   const LinkedinIcon = generateShareIcon('linkedin')
+  const WhatsAppIcon = generateShareIcon('whatsapp')
 
   const iconProps = {
     size: 36,
@@ -55,6 +57,10 @@ export default function BlogSocial ({url, title, summary}) {
             description={summary}>
             <LinkedinIcon {...iconProps}/>
           </LinkedinShareButton>
+          <WhatsappShareButton
+            title={title}>
+            <WhatsAppIcon {...iconProps} />
+          </WhatsappShareButton>
         </div>
       </div>
     </div>
