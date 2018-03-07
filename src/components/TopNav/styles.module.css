@@ -7,12 +7,10 @@
 }
 
 .navBarContent {
-  margin: 0 auto;
+  composes: page from '../../sharedStyles/styles.module.css';
   height: 100%;
-  max-width: 1300px;
   display: flex;
   justify-content: flex-end;
-  padding: 0 24px;
 }
 
 .bigNav {

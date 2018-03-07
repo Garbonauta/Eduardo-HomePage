@@ -26,6 +26,12 @@ html {
   overflow: auto;
 }
 
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .link {
   text-decoration: none;
   color: hsl(0, 0%, 17%);

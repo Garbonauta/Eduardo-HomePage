@@ -13,9 +13,7 @@
 }
 
 .pageContainer {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 24px;
+  composes: page from '../../sharedStyles/styles.module.css';
 }
 
 .footerPadding {
