@@ -1,11 +1,14 @@
 .socialList {
   composes: linkList from '../../sharedStyles/styles.module.css';
   composes: flexRow from '../../sharedStyles/styles.module.css';
+  min-height: 38px;
+  align-items: center;
 }
 
 .socialEntry {
   display: flex;
   font-size: 2em;
+  color: hsl(0, 0%, 40%);
   margin: 0 8px;
 }
 

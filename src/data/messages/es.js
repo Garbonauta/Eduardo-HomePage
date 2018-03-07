@@ -1,6 +1,7 @@
 const messages = {
   'language': 'Español',
-  'mobileMenu.findMe': 'Encuéntrame en',
+  'mobileMenu.navigation': 'Navegación',
+  'mobileMenu.findMe': 'Redes Sociales',
   'on': 'sobre',
   'footer.copyright': 'Copyright',
   'footer.rights': 'Todos los derechos reservados.',

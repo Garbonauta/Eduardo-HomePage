@@ -44,6 +44,7 @@
 }
 
 .activeNavigation {
+  border-bottom: 4px hsl(180, 100%, 40%) solid;
 }
 
 .navIcon {

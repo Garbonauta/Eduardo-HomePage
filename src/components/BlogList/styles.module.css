@@ -1,23 +1,25 @@
 .blogEntry {
   margin: 1rem 0;
   padding: 1rem 0;
-  border-bottom: #f6f2f8 solid 1px;
+  border-bottom: #f5f1f7 solid 1px;
+  color: hsl(0, 0%, 40%);
 }
 
 .blogTitle {
-  composes: header from '../../sharedStyles/styles.module.css';
+  display: block;
+  composes: link from '../../sharedStyles/styles.module.css';
   text-decoration: none;
-  margin: 0 0 1.5rem 0;
-  font-size: 2rem;
-  font-weight: bold;
+  margin: 0 0 0.4rem 0;
+  font-weight: 700;
 }
 
 .blogSummary {
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.4rem 0;
+  color: hsl(0, 0%, 45%);
 }
 
 .blogFoot {
   composes: flexRow from '../../sharedStyles/styles.module.css';
   justify-content: space-between;
-  font-size: 0.8rem;
+  font-size: 0.8em;
 }

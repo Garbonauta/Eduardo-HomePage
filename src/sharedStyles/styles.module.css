@@ -28,6 +28,7 @@ html {
 
 .link {
   text-decoration: none;
+  color: hsl(0, 0%, 17%);
 }
 
 .link:hover {
@@ -54,7 +55,8 @@ html {
   background: #FFFFFF;
   padding: 0 24px;
   margin-bottom: calc(136px + 12px);
-  box-shadow: 0 3px 10px rgba(25, 17, 34, 0.05), 0 3px 14px rgba(25, 17, 34, 0.03);
+  border-radius: 1%;
+  box-shadow: 1px 4px 10px rgba(25, 17, 34, 0.08), 1px 4px 14px rgba(25, 17, 34, 0.06);
 }
 
 .flexRow {
